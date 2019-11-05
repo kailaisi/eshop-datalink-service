@@ -1,12 +1,12 @@
 package com.kailaisi.eshopdatalinkservice.control
 
 import com.alibaba.fastjson.JSONObject
+import com.kailaisi.eshopdatalinkservice.data.ResponseResult
 import com.kailaisi.eshopdatalinkservice.service.CacheService
 import com.kailaisi.eshopdatalinkservice.service.EshopProductService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.web.bind.annotation.RestController
 import redis.clients.jedis.JedisPool
 
 /**
@@ -14,7 +14,6 @@ import redis.clients.jedis.JedisPool
  *<p/>作者：wu
  *<br/>创建时间：2019/5/24 14:33
  */
-@Controller
 class ProductControl {
     @Autowired
     lateinit var productService: EshopProductService
@@ -24,7 +23,6 @@ class ProductControl {
     lateinit var jedis: JedisPool
 
     @RequestMapping("/product")
-    @ResponseBody
     fun getProduct(id: Long): String? {
         print("直连服务获取到请求$id")
         var resource = jedis.resource
