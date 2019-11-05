@@ -2,6 +2,7 @@ package com.kailaisi.eshopdatalinkservice.control
 
 import com.kailaisi.eshopdatalinkservice.ProductPrice
 import com.kailaisi.eshopdatalinkservice.data.ResponseResult
+import com.kailaisi.eshopdatalinkservice.exception.ParameterInvalidException
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @ResponseResult
-@RequestMapping("/text")
+@RequestMapping("/test")
 class TestControl {
     @RequestMapping("/testString")
     fun testString(msg: String): String {
@@ -24,4 +25,15 @@ class TestControl {
         return ProductPrice()
     }
 
+    @RequestMapping("/testException")
+    fun testException():String {
+        println(1/0)
+        return "测试数据"
+    }
+
+    @RequestMapping("/testBusinessException")
+    fun testBusinessException():String {
+        throw ParameterInvalidException()
+        return "测试数据"
+    }
 }

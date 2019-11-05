@@ -9,8 +9,6 @@ import redis.clients.jedis.JedisPool
 import redis.clients.jedis.JedisPoolConfig
 
 @SpringBootApplication
-@EnableEurekaClient
-@EnableFeignClients
 class EshopDatalinkServiceApplication{
     @Bean
     fun jedis(): JedisPool {
