@@ -5,4 +5,5 @@ package com.kailaisi.eshopdatalinkservice.data
  *<br/>创建时间：2019/11/6 11:35
  */
 class LoginUser {
+    val id: Long = 0
 }
