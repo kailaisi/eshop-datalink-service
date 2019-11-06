@@ -4,6 +4,7 @@ import com.kailaisi.eshopdatalinkservice.data.PlatformResult
 import com.kailaisi.eshopdatalinkservice.data.ResponseResult
 import com.kailaisi.eshopdatalinkservice.intercepter.ResultResponseInterceptor
 import com.kailaisi.eshopdatalinkservice.result.DefaultErrorResult
+import com.kailaisi.eshopdatalinkservice.util.FastJsonUtil
 import com.kailaisi.eshopdatalinkservice.util.RequestContextHolderUtil
 import org.springframework.core.MethodParameter
 import org.springframework.http.MediaType
@@ -32,6 +33,7 @@ class ResponseResultHandler : ResponseBodyAdvice<Any> {
         if (kClass.java.isAssignableFrom(PlatformResult::class.java)) {
             return when (body) {
                 is DefaultErrorResult -> PlatformResult().apply {
+                    result = 0
                     code = body.code
                     msg = body.message
                     data = body.errors
@@ -41,8 +43,7 @@ class ResponseResultHandler : ResponseBodyAdvice<Any> {
                 // 而在StringMessageConverter类型，他只接受String类型的返回类型，我们在ResponseBodyAdvice中将返回值从String类型改成ResponseResult类型之后，
                 // 调用StringMessageConverter方法发生类型强转。ReponseResult无法转换成String，发生类型转换异常。
                 // 因为handler处理类的返回类型是String，为了保证一致性，这里需要将ResponseResult转回去
-              //  is String -> FastJsonUtil.bean2Json(PlatformResult.success(body))
-                is String -> PlatformResult.success(body)
+                is String -> FastJsonUtil.bean2Json(PlatformResult.success(body))
                 else -> PlatformResult.success(body)
             }
         }

@@ -19,7 +19,7 @@ open class BaseGlobalExceptionHandler {
 
     open fun handleBusinessException(e: BusinessException, request: HttpServletRequest): ResponseEntity<DefaultErrorResult> {
         val failure = DefaultErrorResult.failure(e)
-        return ResponseEntity.status(HttpStatus.valueOf(failure.status!!))
+        return ResponseEntity.status(HttpStatus.OK)
                 .body(failure)
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam
  *<p/>作者：wu
  *<br/>创建时间：2019/5/21 10:26
  */
+@FeignClient("product-server")
 interface EshopProductService {
     @RequestMapping("/brand/findById", method = arrayOf(RequestMethod.POST))
     fun findBrandById(@RequestParam(value = "id") id: Long): String?

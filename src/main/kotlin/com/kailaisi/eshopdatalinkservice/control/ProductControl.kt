@@ -1,7 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.control
 
 import com.alibaba.fastjson.JSONObject
-import com.kailaisi.eshopdatalinkservice.data.ResponseResult
 import com.kailaisi.eshopdatalinkservice.service.CacheService
 import com.kailaisi.eshopdatalinkservice.service.EshopProductService
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,8 +13,8 @@ import redis.clients.jedis.JedisPool
  *<p/>作者：wu
  *<br/>创建时间：2019/5/24 14:33
  */
+@RestController
 class ProductControl {
-    @Autowired
     lateinit var productService: EshopProductService
     @Autowired
     lateinit var cacheService: CacheService
@@ -32,7 +31,7 @@ class ProductControl {
             info = resource.get("dim_product_$id")
             if (info.isNullOrBlank()) {
                 //从服务接口获取
-                info = productService.findProductById(id)
+                info = productService?.findProductById(id)
                 if (!info.isNullOrEmpty()) {
                     var productJSONObject = JSONObject.parseObject(info)
                     var property = productService.findProductPropertyByProductId(id)
