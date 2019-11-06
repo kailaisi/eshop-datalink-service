@@ -1,6 +1,5 @@
 package com.kailaisi.eshopdatalinkservice.handler
 
-import com.kailaisi.eshopdatalinkservice.data.Result
 import com.kailaisi.eshopdatalinkservice.exception.BusinessException
 import com.kailaisi.eshopdatalinkservice.result.DefaultErrorResult
 import org.springframework.http.HttpStatus

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class CacheServiceImpl : CacheService {
+
     @CachePut(value = ["local"], key = "'key'+#id")
     override fun putProductInfo(id: Long, info: String) = info
 

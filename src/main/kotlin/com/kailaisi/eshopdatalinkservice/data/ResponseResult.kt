@@ -11,3 +11,5 @@ import kotlin.reflect.KClass
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented
 annotation class ResponseResult(val value:KClass<out Result> = PlatformResult::class)
+
+
