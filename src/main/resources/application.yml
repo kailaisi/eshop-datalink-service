@@ -7,3 +7,6 @@ eureka:
 spring:
   application:
     name: datalink-server
+logging:
+  path: "D:/gongcheng/web/eshop-datalink-service/log/"
+  file: "weblog.log"

@@ -26,7 +26,7 @@ open class BaseGlobalExceptionHandler {
      * 违反约束异常
      */
     open fun handleConstraintViolationException(e: ConstraintViolationException, request: HttpServletRequest): DefaultErrorResult {
-        log.info("handleConstraintViolationException start, uri:${request.requestURI}, caused by:$e ")
+        log.error("handleConstraintViolationException start, uri:${request.requestURI}, caused by:$e ")
         val parameterInvalidItemList = ParameterInvalidItemHelper.convertCVSetToParameterInvalidItemList(e.constraintViolations)
         return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList)
     }
@@ -35,7 +35,7 @@ open class BaseGlobalExceptionHandler {
      * 处理验证参数封装错误时异常
      */
     open fun handleConstraintViolationException(e: HttpMessageNotReadableException, request: HttpServletRequest): DefaultErrorResult {
-        log.info("handleConstraintViolationException start, uri:${request.requestURI}, caused by:$e ")
+        log.error("handleConstraintViolationException start, uri:${request.requestURI}, caused by:$e ")
         return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST)
     }
 
@@ -43,7 +43,7 @@ open class BaseGlobalExceptionHandler {
      * 处理参数绑定时异常（反400错误码）
      */
     open fun handleBindException(e: BindException, request: HttpServletRequest): DefaultErrorResult {
-        log.info("handleBindException start, uri:${request.requestURI}, caused by:$e ")
+        log.error("handleBindException start, uri:${request.requestURI}, caused by:$e ")
         val parameterInvalidItemList = ParameterInvalidItemHelper.convertBindingResultToMapParameterInvalidItemList(e.getBindingResult())
         return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList)
     }
@@ -52,7 +52,7 @@ open class BaseGlobalExceptionHandler {
      * 处理使用@Validated注解时，参数验证错误异常（反400错误码）
      */
     open fun handleMethodArgumentNotValidException(e: MethodArgumentNotValidException, request: HttpServletRequest): DefaultErrorResult {
-        log.info("handleMethodArgumentNotValidException start, uri:${request.requestURI}, caused by:$e ")
+        log.error("handleMethodArgumentNotValidException start, uri:${request.requestURI}, caused by:$e ")
         val parameterInvalidItemList = ParameterInvalidItemHelper.convertBindingResultToMapParameterInvalidItemList(e.bindingResult)
         return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList)
     }
@@ -61,17 +61,17 @@ open class BaseGlobalExceptionHandler {
      * 处理使用@Validated注解时，参数验证错误异常（反400错误码）
      */
     open fun handleIllegalArgumentException(e: IllegalArgumentException, request: HttpServletRequest): DefaultErrorResult {
-        log.info("handleIllegalArgumentException start, uri:${request.requestURI}, caused by:$e ")
+        log.error("handleIllegalArgumentException start, uri:${request.requestURI}, caused by:$e ")
         return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST)
     }
 
     open fun handleRuntimeException(e: Throwable, request: HttpServletRequest): DefaultErrorResult {
-        log.info("handleThrowable start, uri:${request.requestURI}, caused by:$e ")
+        log.error("handleThrowable start, uri:${request.requestURI}, caused by:$e ")
         return DefaultErrorResult.failure(ResultCode.SYSTEM_INNER_ERROR, e, HttpStatus.INTERNAL_SERVER_ERROR)
     }
 
     open fun handleBusinessException(e: BusinessException, request: HttpServletRequest): ResponseEntity<DefaultErrorResult> {
-        log.info("handleBusinessException start, uri:${request.requestURI}, caused by:$e ")
+        log.error("handleBusinessException start, uri:${request.requestURI}, caused by:$e ")
         val failure = DefaultErrorResult.failure(e)
         return ResponseEntity.status(HttpStatus.OK)
                 .body(failure)
