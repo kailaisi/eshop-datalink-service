@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @ResponseResult
 @RequestMapping("/test")
-class TestControl {
+class TestController {
     @RequestMapping("/testString")
     fun testString(msg: String): String {
         return msg

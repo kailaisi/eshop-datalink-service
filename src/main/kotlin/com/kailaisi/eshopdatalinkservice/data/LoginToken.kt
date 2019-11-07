@@ -1,13 +1,27 @@
 package com.kailaisi.eshopdatalinkservice.data
 
+import java.util.*
+
 /**
  *描述：登录的token信息
  *<p/>作者：
  *<br/>创建时间：
  */
 class LoginToken {
-    fun getLoginUser(): LoginUser? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+
+    var id: String? = null
+
+    var ttl: Long? = null
+
+    var ip: String? = null
+
+    /**
+     * 平台 [CallSourceEnum]
+     */
+    var platform: String? = null
+
+    var createTime: Date? = null
+
+    var loginUser: LoginUser? = null
 
 }

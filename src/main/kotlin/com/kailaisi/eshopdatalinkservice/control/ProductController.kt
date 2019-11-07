@@ -1,6 +1,7 @@
 package com.kailaisi.eshopdatalinkservice.control
 
 import com.alibaba.fastjson.JSONObject
+import com.kailaisi.eshopdatalinkservice.data.ResponseResult
 import com.kailaisi.eshopdatalinkservice.service.CacheService
 import com.kailaisi.eshopdatalinkservice.service.EshopProductService
 import org.springframework.beans.factory.annotation.Autowired
@@ -13,8 +14,9 @@ import redis.clients.jedis.JedisPool
  *<p/>作者：wu
  *<br/>创建时间：2019/5/24 14:33
  */
+@ResponseResult
 @RestController
-class ProductControl {
+class ProductController {
     lateinit var productService: EshopProductService
     @Autowired
     lateinit var cacheService: CacheService

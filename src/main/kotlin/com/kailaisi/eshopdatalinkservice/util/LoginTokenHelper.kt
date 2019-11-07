@@ -37,7 +37,7 @@ object LoginTokenHelper {
     val loginUserFromRequest: LoginUser?
         get() {
             val loginToken = loginTokenFromRequest ?: return null
-            return loginToken.getLoginUser()
+            return loginToken.loginUser
         }
 
     /**
@@ -46,7 +46,6 @@ object LoginTokenHelper {
     val loginTokenFromRequest: LoginToken?
         get() {
             val loginTokenO = RequestContextHolderUtil.request.getAttribute(LOGIN_TOKEN_KEY) ?: return null
-
             return loginTokenO as LoginToken
         }
 
