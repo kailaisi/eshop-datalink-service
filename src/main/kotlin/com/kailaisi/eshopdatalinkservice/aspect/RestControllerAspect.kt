@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.intercepter
+package com.kailaisi.eshopdatalinkservice.aspect
 
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
@@ -40,7 +40,7 @@ class RestControllerAspect {
         val methodNamed = signature.name
         val paramsJson = getParamsJson(joinPoint)
         val request = RequestContextHolderUtil.request
-        val ip = IPUtils.getRealIP(request)
+        val ip = IPUtils.getRealIp(request)
         val user = LoginTokenHelper.loginUserFromRequest
         val requester = user?.id ?: "unknown"
         val callSource = request.getHeader(HeaderConstants.CALL_SOURCE)

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+import java.lang.IllegalArgumentException
 import java.lang.RuntimeException
 import javax.servlet.http.HttpServletRequest
 
@@ -20,19 +21,21 @@ import javax.servlet.http.HttpServletRequest
 @RestController
 @ControllerAdvice
 class GlobalExceptionHandler: BaseGlobalExceptionHandler() {
-    val log = logger(this)
     @ExceptionHandler(BusinessException::class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     override fun handleBusinessException(e:BusinessException, request:HttpServletRequest): ResponseEntity<DefaultErrorResult> {
-        log.error(e.message,e)
         return super.handleBusinessException(e,request)
     }
 
     @ExceptionHandler(Throwable::class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    override fun handleRuntimeException(e:RuntimeException, request:HttpServletRequest): DefaultErrorResult {
-        log.error(e.message,e)
+    override fun handleRuntimeException(e:Throwable, request:HttpServletRequest): DefaultErrorResult {
         return super.handleRuntimeException(e,request)
     }
 
+    @ExceptionHandler(IllegalArgumentException::class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    override fun handleIllegalArgumentException(e:IllegalArgumentException, request:HttpServletRequest): DefaultErrorResult {
+        return super.handleIllegalArgumentException(e,request)
+    }
 }
