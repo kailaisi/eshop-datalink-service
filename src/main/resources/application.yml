@@ -18,3 +18,7 @@ mybatis:
   mapper-locations:
     - classpath:mapper/*.xml
     - classpath*:com/**/mapper/*.xml
+mapper:
+  mappers:
+    - com.kailaisi.eshopdatalinkservice.config.mapper.MyMapper
+  not-empty: true

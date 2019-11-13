@@ -7,10 +7,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients
 import org.springframework.context.annotation.Bean
 import redis.clients.jedis.JedisPool
 import redis.clients.jedis.JedisPoolConfig
+import tk.mybatis.spring.annotation.MapperScan
 
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients
+@MapperScan(basePackages = ["com.kailaisi.eshopdatalinkservice.mapper"])
 class EshopDatalinkServiceApplication {
     @Bean
     fun jedis(): JedisPool {

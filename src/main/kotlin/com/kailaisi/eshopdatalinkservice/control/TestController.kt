@@ -2,7 +2,7 @@ package com.kailaisi.eshopdatalinkservice.control
 
 import com.kailaisi.eshopdatalinkservice.ProductPrice
 import com.kailaisi.eshopdatalinkservice.data.ResponseResult
-import com.kailaisi.eshopdatalinkservice.exception.ParameterInvalidException
+import com.kailaisi.eshopdatalinkservice.result.exception.ParameterInvalidException
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 

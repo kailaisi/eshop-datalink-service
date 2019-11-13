@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.exception
+package com.kailaisi.eshopdatalinkservice.result.exception
 
 import com.kailaisi.eshopdatalinkservice.data.ResultCode
 
@@ -7,7 +7,7 @@ import com.kailaisi.eshopdatalinkservice.data.ResultCode
  *<p/>作者：wu
  *<br/>创建时间：2019/11/5 22:42
  */
-class InternalServerException:BusinessException {
+class UserNotLoginException:BusinessException {
     constructor() : super()
 
     constructor(data: Any) : super()

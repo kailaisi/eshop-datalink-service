@@ -1,8 +1,8 @@
-package com.kailaisi.eshopdatalinkservice.handler
+package com.kailaisi.eshopdatalinkservice.config.handler
 
 import com.kailaisi.eshopdatalinkservice.data.PlatformResult
 import com.kailaisi.eshopdatalinkservice.data.ResponseResult
-import com.kailaisi.eshopdatalinkservice.intercepter.ResultResponseInterceptor
+import com.kailaisi.eshopdatalinkservice.config.intercepter.ResultResponseInterceptor
 import com.kailaisi.eshopdatalinkservice.result.DefaultErrorResult
 import com.kailaisi.eshopdatalinkservice.util.FastJsonUtil
 import com.kailaisi.eshopdatalinkservice.util.RequestContextHolderUtil

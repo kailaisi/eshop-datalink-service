@@ -2,8 +2,8 @@ package com.kailaisi.eshopdatalinkservice.result
 
 import com.kailaisi.eshopdatalinkservice.data.Result
 import com.kailaisi.eshopdatalinkservice.data.ResultCode
-import com.kailaisi.eshopdatalinkservice.exception.BusinessException
-import com.kailaisi.eshopdatalinkservice.exception.BusinessExceptionEnum
+import com.kailaisi.eshopdatalinkservice.result.exception.BusinessException
+import com.kailaisi.eshopdatalinkservice.result.exception.BusinessExceptionEnum
 import com.kailaisi.eshopdatalinkservice.util.RequestContextHolderUtil
 import org.springframework.http.HttpStatus
 import java.util.*

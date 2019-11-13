@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.resolver
+package com.kailaisi.eshopdatalinkservice.config.resolver
 
 import com.kailaisi.eshopdatalinkservice.data.LoginAuth
 import com.kailaisi.eshopdatalinkservice.data.LoginUser

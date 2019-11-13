@@ -1,9 +1,9 @@
-package com.kailaisi.eshopdatalinkservice.aspect
+package com.kailaisi.eshopdatalinkservice.config.aspect
 
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
 import com.kailaisi.eshopdatalinkservice.data.HeaderConstants
-import com.kailaisi.eshopdatalinkservice.handler.GlobalExceptionHandler
+import com.kailaisi.eshopdatalinkservice.config.handler.GlobalExceptionHandler
 import com.kailaisi.eshopdatalinkservice.util.IPUtils
 import com.kailaisi.eshopdatalinkservice.util.LoginTokenHelper
 import com.kailaisi.eshopdatalinkservice.util.RequestContextHolderUtil

@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.intercepter
+package com.kailaisi.eshopdatalinkservice.config.intercepter
 
 import com.kailaisi.eshopdatalinkservice.data.ResponseResult
 import org.springframework.stereotype.Component

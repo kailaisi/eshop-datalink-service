@@ -1,8 +1,8 @@
 package com.kailaisi.eshopdatalinkservice.result
 
-import com.kailaisi.eshopdatalinkservice.resolver.LoginUserArgumentResolver
-import com.kailaisi.eshopdatalinkservice.intercepter.LoginedAuthInterceptor
-import com.kailaisi.eshopdatalinkservice.intercepter.ResultResponseInterceptor
+import com.kailaisi.eshopdatalinkservice.config.resolver.LoginUserArgumentResolver
+import com.kailaisi.eshopdatalinkservice.config.intercepter.LoginedAuthInterceptor
+import com.kailaisi.eshopdatalinkservice.config.intercepter.ResultResponseInterceptor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.method.support.HandlerMethodArgumentResolver

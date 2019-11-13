@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.exception
+package com.kailaisi.eshopdatalinkservice.result.exception
 
 import com.kailaisi.eshopdatalinkservice.data.ResultCode
 

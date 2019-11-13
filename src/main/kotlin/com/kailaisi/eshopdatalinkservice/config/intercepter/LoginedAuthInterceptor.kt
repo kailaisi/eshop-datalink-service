@@ -1,8 +1,8 @@
-package com.kailaisi.eshopdatalinkservice.intercepter
+package com.kailaisi.eshopdatalinkservice.config.intercepter
 
 import com.kailaisi.eshopdatalinkservice.data.LoginAuth
 import com.kailaisi.eshopdatalinkservice.data.ResultCode
-import com.kailaisi.eshopdatalinkservice.exception.BusinessException
+import com.kailaisi.eshopdatalinkservice.result.exception.BusinessException
 import com.kailaisi.eshopdatalinkservice.service.UserLoginCacheService
 import com.kailaisi.eshopdatalinkservice.util.LoginTokenHelper
 import org.springframework.beans.factory.annotation.Autowired
