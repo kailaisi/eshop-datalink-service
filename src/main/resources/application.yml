@@ -11,6 +11,18 @@ spring:
     username: root
     password: 03102896528
     url: jdbc:mysql://localhost:3306/eshop
+  redis:
+    host: localhost
+    database: 0
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 3000
 logging:
   path: "D:/gongcheng/web/eshop-datalink-service/log/"
   file: "weblog.log"
