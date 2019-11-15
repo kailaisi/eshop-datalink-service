@@ -1,7 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.service
 
-import com.kailaisi.eshopdatalinkservice.data.LoginQO
-import org.springframework.stereotype.Service
+import com.kailaisi.eshopdatalinkservice.model.LoginQO
 
 /**
  *描述：登录服务Service

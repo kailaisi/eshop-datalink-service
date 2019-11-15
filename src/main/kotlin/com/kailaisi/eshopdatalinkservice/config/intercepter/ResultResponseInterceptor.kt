@@ -1,6 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.config.intercepter
 
-import com.kailaisi.eshopdatalinkservice.data.ResponseResult
+import com.kailaisi.eshopdatalinkservice.model.ResponseResult
 import org.springframework.stereotype.Component
 import org.springframework.web.method.HandlerMethod
 import org.springframework.web.servlet.HandlerInterceptor

@@ -1,6 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.config.handler
 
-import com.kailaisi.eshopdatalinkservice.data.ResultCode
+import com.kailaisi.eshopdatalinkservice.model.ResultCode
 import com.kailaisi.eshopdatalinkservice.result.exception.BusinessException
 import com.kailaisi.eshopdatalinkservice.result.DefaultErrorResult
 import com.kailaisi.eshopdatalinkservice.util.ParameterInvalidItemHelper

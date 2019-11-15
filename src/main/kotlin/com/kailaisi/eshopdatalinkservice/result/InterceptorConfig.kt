@@ -1,5 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.result
 
+import com.kailaisi.eshopdatalinkservice.config.intercepter.HeaderParamsCheckInterceptor
 import com.kailaisi.eshopdatalinkservice.config.resolver.LoginUserArgumentResolver
 import com.kailaisi.eshopdatalinkservice.config.intercepter.LoginedAuthInterceptor
 import com.kailaisi.eshopdatalinkservice.config.intercepter.ResultResponseInterceptor
@@ -22,12 +23,15 @@ class InterceptorConfig : WebMvcConfigurer {
     lateinit var loginedAuthInterceptor: LoginedAuthInterceptor
     @Autowired
     lateinit var loginUserArgumentResolver: LoginUserArgumentResolver
+    @Autowired
+    lateinit var headerParamsCheckInterceptor: HeaderParamsCheckInterceptor
 
     /**
      * 拦截器
      */
     override fun addInterceptors(registry: InterceptorRegistry) {
         val apiUri = "/**"
+        registry.addInterceptor(headerParamsCheckInterceptor).addPathPatterns(apiUri)
         //登录校验拦截处理
         registry.addInterceptor(loginedAuthInterceptor).addPathPatterns(apiUri)
         //相应结果拦截处理

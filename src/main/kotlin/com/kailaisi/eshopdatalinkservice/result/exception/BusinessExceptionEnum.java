@@ -1,6 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.result.exception;
 
-import com.kailaisi.eshopdatalinkservice.data.ResultCode;
+import com.kailaisi.eshopdatalinkservice.model.ResultCode;
 import org.springframework.http.HttpStatus;
 
 /**

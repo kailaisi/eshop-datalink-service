@@ -4,34 +4,35 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <properties resource="application-dev.properties"/>
+    <properties resource="datasource.properties"/>
 
     <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="tk.mybatis.springboot.util.MyMapper"/>
+            <property name="mappers" value="com.kailaisi.eshopdatalinkservice.config.mapper.MyMapper"/>
         </plugin>
 
         <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
                         connectionURL="${spring.datasource.url}"
                         userId="${spring.datasource.username}"
                         password="${spring.datasource.password}">
+            <property name="nullCatalogMeansCurrent" value="true"/><!--这句话会生成全部数据库的表，如果没有的话，所有的数据库表都会生成-->
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.kailaisi.eshopdatalinkservice.mapper" targetProject="src/main/kotlin"/>
+        <javaModelGenerator targetPackage="com.kailaisi.eshopdatalinkservice.mgb.model"
+                            targetProject="src/main/kotlin"/>
 
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
 
-        <javaClientGenerator targetPackage="com.kailaisi.eshopdatalinkservice.mapper" targetProject="src/main/kotlin"
+        <javaClientGenerator targetPackage="com.kailaisi.eshopdatalinkservice.mgb.mapper"
+                             targetProject="src/main/kotlin"
                              type="XMLMAPPER"/>
 
-        <table tableName="country">
+        <table tableName="%">
             <!--mysql 配置-->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--oracle 配置-->
-            <!--<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>-->
         </table>
     </context>
 </generatorConfiguration>

@@ -1,6 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.service
 
-import com.kailaisi.eshopdatalinkservice.data.LoginToken
+import com.kailaisi.eshopdatalinkservice.model.LoginToken
 
 /**
  *描述：登录用户Service

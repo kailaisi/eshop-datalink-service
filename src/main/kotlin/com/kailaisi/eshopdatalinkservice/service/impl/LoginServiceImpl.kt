@@ -1,6 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.service.impl
 
-import com.kailaisi.eshopdatalinkservice.data.LoginQO
+import com.kailaisi.eshopdatalinkservice.model.LoginQO
 import com.kailaisi.eshopdatalinkservice.service.LoginService
 import org.springframework.stereotype.Service
 

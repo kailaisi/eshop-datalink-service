@@ -1,7 +1,7 @@
 package com.kailaisi.eshopdatalinkservice.config.handler
 
-import com.kailaisi.eshopdatalinkservice.data.PlatformResult
-import com.kailaisi.eshopdatalinkservice.data.ResponseResult
+import com.kailaisi.eshopdatalinkservice.model.PlatformResult
+import com.kailaisi.eshopdatalinkservice.model.ResponseResult
 import com.kailaisi.eshopdatalinkservice.config.intercepter.ResultResponseInterceptor
 import com.kailaisi.eshopdatalinkservice.result.DefaultErrorResult
 import com.kailaisi.eshopdatalinkservice.util.FastJsonUtil

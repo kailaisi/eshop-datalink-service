@@ -2,7 +2,7 @@ package com.kailaisi.eshopdatalinkservice.config.aspect
 
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
-import com.kailaisi.eshopdatalinkservice.data.HeaderConstants
+import com.kailaisi.eshopdatalinkservice.model.HeaderConstants
 import com.kailaisi.eshopdatalinkservice.config.handler.GlobalExceptionHandler
 import com.kailaisi.eshopdatalinkservice.util.IPUtils
 import com.kailaisi.eshopdatalinkservice.util.LoginTokenHelper

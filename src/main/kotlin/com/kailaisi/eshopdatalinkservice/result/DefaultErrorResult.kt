@@ -1,7 +1,7 @@
 package com.kailaisi.eshopdatalinkservice.result
 
-import com.kailaisi.eshopdatalinkservice.data.Result
-import com.kailaisi.eshopdatalinkservice.data.ResultCode
+import com.kailaisi.eshopdatalinkservice.model.Result
+import com.kailaisi.eshopdatalinkservice.model.ResultCode
 import com.kailaisi.eshopdatalinkservice.result.exception.BusinessException
 import com.kailaisi.eshopdatalinkservice.result.exception.BusinessExceptionEnum
 import com.kailaisi.eshopdatalinkservice.util.RequestContextHolderUtil

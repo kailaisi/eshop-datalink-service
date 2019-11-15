@@ -1,7 +1,7 @@
 package com.kailaisi.eshopdatalinkservice.service.impl
 
-import com.kailaisi.eshopdatalinkservice.data.LoginToken
-import com.kailaisi.eshopdatalinkservice.data.LoginUser
+import com.kailaisi.eshopdatalinkservice.model.LoginToken
+import com.kailaisi.eshopdatalinkservice.model.LoginUser
 import com.kailaisi.eshopdatalinkservice.service.UserLoginCacheService
 import org.springframework.stereotype.Service
 import org.springframework.util.Assert

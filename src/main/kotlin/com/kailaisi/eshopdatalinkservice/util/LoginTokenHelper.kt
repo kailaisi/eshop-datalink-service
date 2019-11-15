@@ -1,7 +1,7 @@
 package com.kailaisi.eshopdatalinkservice.util
 
-import com.kailaisi.eshopdatalinkservice.data.LoginToken
-import com.kailaisi.eshopdatalinkservice.data.LoginUser
+import com.kailaisi.eshopdatalinkservice.model.LoginToken
+import com.kailaisi.eshopdatalinkservice.model.LoginUser
 import org.apache.commons.codec.digest.DigestUtils
 import java.util.*
 

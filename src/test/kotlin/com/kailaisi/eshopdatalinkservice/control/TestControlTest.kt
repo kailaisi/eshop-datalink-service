@@ -31,7 +31,7 @@ class TestControlTest {
         mvc.perform(request)
                 .andExpect { status().isOk }
                 .andExpect { content().toString().contentEquals("{\n" +
-                        "    \"data\": null,\n" +
+                        "    \"model\": null,\n" +
                         "    \"code\": 40001,\n" +
                         "    \"msg\": \"系统请稍后重试\"\n" +
                         "}") }
