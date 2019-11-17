@@ -5,6 +5,8 @@ import com.kailaisi.eshopdatalinkservice.mgb.model.PmsBrand
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
 import com.kailaisi.eshopdatalinkservice.service.PmsBrandService
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
@@ -17,18 +19,21 @@ import org.springframework.web.bind.annotation.*
  */
 @ResponseResult
 @RestController
+@Api(tags = ["PmsBrandController"], description = "商品的品牌管理")
 @RequestMapping("/brand")
 class PmsBrandController {
     @Autowired
     lateinit var mService: PmsBrandService
 
+    @ApiOperation("获取所有的品牌列表信息")
     @GetMapping("listAll")
     fun getBrandList(): List<PmsBrand> {
         return mService.listAllBrand()
     }
 
-    @PostMapping("/creat")
-    fun creatBrand(@Validated @RequestBody pmsBrand: PmsBrand): PmsBrand {
+    @ApiOperation("生成品牌信息")
+    @PostMapping("/create")
+    fun createBrand(@Validated @RequestBody pmsBrand: PmsBrand): PmsBrand {
         val count = mService.creatBrand(pmsBrand)
         return when (count) {
             1 -> pmsBrand
@@ -36,6 +41,7 @@ class PmsBrandController {
         }
     }
 
+    @ApiOperation("更新指定ID的品牌信息")
     @PostMapping("/update/{id}")
     fun update(@PathVariable("id") id: Long, @Validated @RequestBody pmsBrand: PmsBrand): String {
         val count = mService.updateBrand(id, pmsBrand)
@@ -45,6 +51,7 @@ class PmsBrandController {
         }
     }
 
+    @ApiOperation("删除指定Id的品牌信息")
     @GetMapping("/delete/{id}")
     fun delete(@Validated @PathVariable("id") id: Long): String {
         val count = mService.deleteBrand(id)
@@ -54,6 +61,7 @@ class PmsBrandController {
         }
     }
 
+    @ApiOperation("分页查询品牌列表")
     @GetMapping(value = ["/list"])
     @ResponseBody
     fun getList(@RequestParam(value = "keyword", required = false) keyword: String,
