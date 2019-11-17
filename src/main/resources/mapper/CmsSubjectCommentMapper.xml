@@ -1,16 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kailaisi.eshopdatalinkservice.mgb.mapper.CmsSubjectCommentMapper" >
-  <resultMap id="BaseResultMap" type="com.kailaisi.eshopdatalinkservice.mgb.model.CmsSubjectComment" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kailaisi.eshopdatalinkservice.mgb.mapper.CmsSubjectCommentMapper">
+  <resultMap id="BaseResultMap" type="com.kailaisi.eshopdatalinkservice.mgb.model.CmsSubjectComment">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="subject_id" property="subjectId" jdbcType="BIGINT" />
-    <result column="member_nick_name" property="memberNickName" jdbcType="VARCHAR" />
-    <result column="member_icon" property="memberIcon" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="show_status" property="showStatus" jdbcType="INTEGER" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="subject_id" jdbcType="BIGINT" property="subjectId" />
+    <result column="member_nick_name" jdbcType="VARCHAR" property="memberNickName" />
+    <result column="member_icon" jdbcType="VARCHAR" property="memberIcon" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="show_status" jdbcType="INTEGER" property="showStatus" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 </mapper>

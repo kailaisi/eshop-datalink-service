@@ -1,43 +1,53 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "sms_coupon_product_relation")
 public class SmsCouponProductRelation extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
     @Column(name = "coupon_id")
+    @ApiModelProperty("")
     private Long couponId;
 
     @Column(name = "product_id")
+    @ApiModelProperty("")
     private Long productId;
 
     /**
      * 商品名称
      */
     @Column(name = "product_name")
+    @ApiModelProperty("商品名称")
     private String productName;
 
     /**
      * 商品编码
      */
     @Column(name = "product_sn")
+    @ApiModelProperty("商品编码")
     private String productSn;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**

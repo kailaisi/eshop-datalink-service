@@ -12,6 +12,7 @@
 
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <property name="mappers" value="com.kailaisi.eshopdatalinkservice.config.mapper.CrudMapper"/>
+            <property name="swagger" value="true"/>
         </plugin>
 
         <jdbcConnection driverClass="${spring.datasource.driver-class-name}"

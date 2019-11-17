@@ -1,33 +1,35 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kailaisi.eshopdatalinkservice.mgb.mapper.OmsOrderItemMapper" >
-  <resultMap id="BaseResultMap" type="com.kailaisi.eshopdatalinkservice.mgb.model.OmsOrderItem" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kailaisi.eshopdatalinkservice.mgb.mapper.OmsOrderItemMapper">
+  <resultMap id="BaseResultMap" type="com.kailaisi.eshopdatalinkservice.mgb.model.OmsOrderItem">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="order_id" property="orderId" jdbcType="BIGINT" />
-    <result column="order_sn" property="orderSn" jdbcType="VARCHAR" />
-    <result column="product_id" property="productId" jdbcType="BIGINT" />
-    <result column="product_pic" property="productPic" jdbcType="VARCHAR" />
-    <result column="product_name" property="productName" jdbcType="VARCHAR" />
-    <result column="product_brand" property="productBrand" jdbcType="VARCHAR" />
-    <result column="product_sn" property="productSn" jdbcType="VARCHAR" />
-    <result column="product_price" property="productPrice" jdbcType="DECIMAL" />
-    <result column="product_quantity" property="productQuantity" jdbcType="INTEGER" />
-    <result column="product_sku_id" property="productSkuId" jdbcType="BIGINT" />
-    <result column="product_sku_code" property="productSkuCode" jdbcType="VARCHAR" />
-    <result column="product_category_id" property="productCategoryId" jdbcType="BIGINT" />
-    <result column="sp1" property="sp1" jdbcType="VARCHAR" />
-    <result column="sp2" property="sp2" jdbcType="VARCHAR" />
-    <result column="sp3" property="sp3" jdbcType="VARCHAR" />
-    <result column="promotion_name" property="promotionName" jdbcType="VARCHAR" />
-    <result column="promotion_amount" property="promotionAmount" jdbcType="DECIMAL" />
-    <result column="coupon_amount" property="couponAmount" jdbcType="DECIMAL" />
-    <result column="integration_amount" property="integrationAmount" jdbcType="DECIMAL" />
-    <result column="real_amount" property="realAmount" jdbcType="DECIMAL" />
-    <result column="gift_integration" property="giftIntegration" jdbcType="INTEGER" />
-    <result column="gift_growth" property="giftGrowth" jdbcType="INTEGER" />
-    <result column="product_attr" property="productAttr" jdbcType="VARCHAR" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="order_sn" jdbcType="VARCHAR" property="orderSn" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_pic" jdbcType="VARCHAR" property="productPic" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_brand" jdbcType="VARCHAR" property="productBrand" />
+    <result column="product_sn" jdbcType="VARCHAR" property="productSn" />
+    <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
+    <result column="product_quantity" jdbcType="INTEGER" property="productQuantity" />
+    <result column="product_sku_id" jdbcType="BIGINT" property="productSkuId" />
+    <result column="product_sku_code" jdbcType="VARCHAR" property="productSkuCode" />
+    <result column="product_category_id" jdbcType="BIGINT" property="productCategoryId" />
+    <result column="sp1" jdbcType="VARCHAR" property="sp1" />
+    <result column="sp2" jdbcType="VARCHAR" property="sp2" />
+    <result column="sp3" jdbcType="VARCHAR" property="sp3" />
+    <result column="promotion_name" jdbcType="VARCHAR" property="promotionName" />
+    <result column="promotion_amount" jdbcType="DECIMAL" property="promotionAmount" />
+    <result column="coupon_amount" jdbcType="DECIMAL" property="couponAmount" />
+    <result column="integration_amount" jdbcType="DECIMAL" property="integrationAmount" />
+    <result column="real_amount" jdbcType="DECIMAL" property="realAmount" />
+    <result column="gift_integration" jdbcType="INTEGER" property="giftIntegration" />
+    <result column="gift_growth" jdbcType="INTEGER" property="giftGrowth" />
+    <result column="product_attr" jdbcType="VARCHAR" property="productAttr" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
 </mapper>

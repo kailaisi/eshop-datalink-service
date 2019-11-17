@@ -1,44 +1,54 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "pms_product_ladder")
 public class PmsProductLadder extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
     @Column(name = "product_id")
+    @ApiModelProperty("")
     private Long productId;
 
     /**
      * 满足的商品数量
      */
+    @ApiModelProperty("满足的商品数量")
     private Integer count;
 
     /**
      * 折扣
      */
+    @ApiModelProperty("折扣")
     private BigDecimal discount;
 
     /**
      * 折后价格
      */
+    @ApiModelProperty("折后价格")
     private BigDecimal price;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**

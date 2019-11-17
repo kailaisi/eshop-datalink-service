@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kailaisi.eshopdatalinkservice.mgb.mapper.UmsMemberProductCategoryRelationMapper" >
-  <resultMap id="BaseResultMap" type="com.kailaisi.eshopdatalinkservice.mgb.model.UmsMemberProductCategoryRelation" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kailaisi.eshopdatalinkservice.mgb.mapper.UmsMemberProductCategoryRelationMapper">
+  <resultMap id="BaseResultMap" type="com.kailaisi.eshopdatalinkservice.mgb.model.UmsMemberProductCategoryRelation">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="member_id" property="memberId" jdbcType="BIGINT" />
-    <result column="product_category_id" property="productCategoryId" jdbcType="BIGINT" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="product_category_id" jdbcType="BIGINT" property="productCategoryId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 </mapper>

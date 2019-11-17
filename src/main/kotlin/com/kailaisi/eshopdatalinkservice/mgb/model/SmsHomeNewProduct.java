@@ -1,36 +1,46 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "sms_home_new_product")
 public class SmsHomeNewProduct extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
     @Column(name = "product_id")
+    @ApiModelProperty("")
     private Long productId;
 
     @Column(name = "product_name")
+    @ApiModelProperty("")
     private String productName;
 
     @Column(name = "recommend_status")
+    @ApiModelProperty("")
     private Integer recommendStatus;
 
+    @ApiModelProperty("")
     private Integer sort;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**

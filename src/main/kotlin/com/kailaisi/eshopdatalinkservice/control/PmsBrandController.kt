@@ -1,9 +1,9 @@
 package com.kailaisi.eshopdatalinkservice.control
 
 import com.kailaisi.eshopdatalinkservice.dto.CommonPage
-import com.kailaisi.eshopdatalinkservice.mgb.model.PmsBrand
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
+import com.kailaisi.eshopdatalinkservice.mgb.model.PmsBrand
 import com.kailaisi.eshopdatalinkservice.service.PmsBrandService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation

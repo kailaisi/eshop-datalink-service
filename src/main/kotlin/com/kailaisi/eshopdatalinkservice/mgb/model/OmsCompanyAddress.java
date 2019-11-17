@@ -1,74 +1,89 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "oms_company_address")
 public class OmsCompanyAddress extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
     /**
      * 地址名称
      */
     @Column(name = "address_name")
+    @ApiModelProperty("地址名称")
     private String addressName;
 
     /**
      * 默认发货地址：0->否；1->是
      */
     @Column(name = "send_status")
+    @ApiModelProperty("默认发货地址：0->否；1->是")
     private Integer sendStatus;
 
     /**
      * 是否默认收货地址：0->否；1->是
      */
     @Column(name = "receive_status")
+    @ApiModelProperty("是否默认收货地址：0->否；1->是")
     private Integer receiveStatus;
 
     /**
      * 收发货人姓名
      */
+    @ApiModelProperty("收发货人姓名")
     private String name;
 
     /**
      * 收货人电话
      */
+    @ApiModelProperty("收货人电话")
     private String phone;
 
     /**
      * 省/直辖市
      */
+    @ApiModelProperty("省/直辖市")
     private String province;
 
     /**
      * 市
      */
+    @ApiModelProperty("市")
     private String city;
 
     /**
      * 区
      */
+    @ApiModelProperty("区")
     private String region;
 
     /**
      * 详细地址
      */
     @Column(name = "detail_address")
+    @ApiModelProperty("详细地址")
     private String detailAddress;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**

@@ -1,40 +1,51 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "cms_prefrence_area")
 public class CmsPrefrenceArea extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
+    @ApiModelProperty("")
     private String name;
 
     @Column(name = "sub_title")
+    @ApiModelProperty("")
     private String subTitle;
 
+    @ApiModelProperty("")
     private Integer sort;
 
     @Column(name = "show_status")
+    @ApiModelProperty("")
     private Integer showStatus;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**
      * 展示图片
      */
+    @ApiModelProperty("展示图片")
     private byte[] pic;
 
     /**

@@ -1,68 +1,84 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "cms_topic")
 public class CmsTopic extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
     @Column(name = "category_id")
+    @ApiModelProperty("")
     private Long categoryId;
 
+    @ApiModelProperty("")
     private String name;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     @Column(name = "start_time")
+    @ApiModelProperty("")
     private Date startTime;
 
     @Column(name = "end_time")
+    @ApiModelProperty("")
     private Date endTime;
 
     /**
      * 参与人数
      */
     @Column(name = "attend_count")
+    @ApiModelProperty("参与人数")
     private Integer attendCount;
 
     /**
      * 关注人数
      */
     @Column(name = "attention_count")
+    @ApiModelProperty("关注人数")
     private Integer attentionCount;
 
     @Column(name = "read_count")
+    @ApiModelProperty("")
     private Integer readCount;
 
     /**
      * 奖品名称
      */
     @Column(name = "award_name")
+    @ApiModelProperty("奖品名称")
     private String awardName;
 
     /**
      * 参与方式
      */
     @Column(name = "attend_type")
+    @ApiModelProperty("参与方式")
     private String attendType;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**
      * 话题内容
      */
+    @ApiModelProperty("话题内容")
     private String content;
 
     /**

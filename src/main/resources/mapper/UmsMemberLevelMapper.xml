@@ -1,22 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kailaisi.eshopdatalinkservice.mgb.mapper.UmsMemberLevelMapper" >
-  <resultMap id="BaseResultMap" type="com.kailaisi.eshopdatalinkservice.mgb.model.UmsMemberLevel" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kailaisi.eshopdatalinkservice.mgb.mapper.UmsMemberLevelMapper">
+  <resultMap id="BaseResultMap" type="com.kailaisi.eshopdatalinkservice.mgb.model.UmsMemberLevel">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="growth_point" property="growthPoint" jdbcType="INTEGER" />
-    <result column="default_status" property="defaultStatus" jdbcType="INTEGER" />
-    <result column="free_freight_point" property="freeFreightPoint" jdbcType="DECIMAL" />
-    <result column="comment_growth_point" property="commentGrowthPoint" jdbcType="INTEGER" />
-    <result column="priviledge_free_freight" property="priviledgeFreeFreight" jdbcType="INTEGER" />
-    <result column="priviledge_sign_in" property="priviledgeSignIn" jdbcType="INTEGER" />
-    <result column="priviledge_comment" property="priviledgeComment" jdbcType="INTEGER" />
-    <result column="priviledge_promotion" property="priviledgePromotion" jdbcType="INTEGER" />
-    <result column="priviledge_member_price" property="priviledgeMemberPrice" jdbcType="INTEGER" />
-    <result column="priviledge_birthday" property="priviledgeBirthday" jdbcType="INTEGER" />
-    <result column="note" property="note" jdbcType="VARCHAR" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="growth_point" jdbcType="INTEGER" property="growthPoint" />
+    <result column="default_status" jdbcType="INTEGER" property="defaultStatus" />
+    <result column="free_freight_point" jdbcType="DECIMAL" property="freeFreightPoint" />
+    <result column="comment_growth_point" jdbcType="INTEGER" property="commentGrowthPoint" />
+    <result column="priviledge_free_freight" jdbcType="INTEGER" property="priviledgeFreeFreight" />
+    <result column="priviledge_sign_in" jdbcType="INTEGER" property="priviledgeSignIn" />
+    <result column="priviledge_comment" jdbcType="INTEGER" property="priviledgeComment" />
+    <result column="priviledge_promotion" jdbcType="INTEGER" property="priviledgePromotion" />
+    <result column="priviledge_member_price" jdbcType="INTEGER" property="priviledgeMemberPrice" />
+    <result column="priviledge_birthday" jdbcType="INTEGER" property="priviledgeBirthday" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 </mapper>

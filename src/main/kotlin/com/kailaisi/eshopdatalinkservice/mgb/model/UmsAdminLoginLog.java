@@ -1,38 +1,48 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "ums_admin_login_log")
 public class UmsAdminLoginLog extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
     @Column(name = "admin_id")
+    @ApiModelProperty("")
     private Long adminId;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
+    @ApiModelProperty("")
     private String ip;
 
+    @ApiModelProperty("")
     private String address;
 
     /**
      * 浏览器登录类型
      */
     @Column(name = "user_agent")
+    @ApiModelProperty("浏览器登录类型")
     private String userAgent;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**

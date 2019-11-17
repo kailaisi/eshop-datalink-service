@@ -1,53 +1,54 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kailaisi.eshopdatalinkservice.mgb.mapper.OmsOrderMapper" >
-  <resultMap id="BaseResultMap" type="com.kailaisi.eshopdatalinkservice.mgb.model.OmsOrder" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kailaisi.eshopdatalinkservice.mgb.mapper.OmsOrderMapper">
+  <resultMap id="BaseResultMap" type="com.kailaisi.eshopdatalinkservice.mgb.model.OmsOrder">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="member_id" property="memberId" jdbcType="BIGINT" />
-    <result column="coupon_id" property="couponId" jdbcType="BIGINT" />
-    <result column="order_sn" property="orderSn" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="member_username" property="memberUsername" jdbcType="VARCHAR" />
-    <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
-    <result column="pay_amount" property="payAmount" jdbcType="DECIMAL" />
-    <result column="freight_amount" property="freightAmount" jdbcType="DECIMAL" />
-    <result column="promotion_amount" property="promotionAmount" jdbcType="DECIMAL" />
-    <result column="integration_amount" property="integrationAmount" jdbcType="DECIMAL" />
-    <result column="coupon_amount" property="couponAmount" jdbcType="DECIMAL" />
-    <result column="discount_amount" property="discountAmount" jdbcType="DECIMAL" />
-    <result column="pay_type" property="payType" jdbcType="INTEGER" />
-    <result column="source_type" property="sourceType" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="order_type" property="orderType" jdbcType="INTEGER" />
-    <result column="delivery_company" property="deliveryCompany" jdbcType="VARCHAR" />
-    <result column="delivery_sn" property="deliverySn" jdbcType="VARCHAR" />
-    <result column="auto_confirm_day" property="autoConfirmDay" jdbcType="INTEGER" />
-    <result column="integration" property="integration" jdbcType="INTEGER" />
-    <result column="growth" property="growth" jdbcType="INTEGER" />
-    <result column="promotion_info" property="promotionInfo" jdbcType="VARCHAR" />
-    <result column="bill_type" property="billType" jdbcType="INTEGER" />
-    <result column="bill_header" property="billHeader" jdbcType="VARCHAR" />
-    <result column="bill_content" property="billContent" jdbcType="VARCHAR" />
-    <result column="bill_receiver_phone" property="billReceiverPhone" jdbcType="VARCHAR" />
-    <result column="bill_receiver_email" property="billReceiverEmail" jdbcType="VARCHAR" />
-    <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
-    <result column="receiver_phone" property="receiverPhone" jdbcType="VARCHAR" />
-    <result column="receiver_post_code" property="receiverPostCode" jdbcType="VARCHAR" />
-    <result column="receiver_province" property="receiverProvince" jdbcType="VARCHAR" />
-    <result column="receiver_city" property="receiverCity" jdbcType="VARCHAR" />
-    <result column="receiver_region" property="receiverRegion" jdbcType="VARCHAR" />
-    <result column="receiver_detail_address" property="receiverDetailAddress" jdbcType="VARCHAR" />
-    <result column="note" property="note" jdbcType="VARCHAR" />
-    <result column="confirm_status" property="confirmStatus" jdbcType="INTEGER" />
-    <result column="delete_status" property="deleteStatus" jdbcType="INTEGER" />
-    <result column="use_integration" property="useIntegration" jdbcType="INTEGER" />
-    <result column="payment_time" property="paymentTime" jdbcType="TIMESTAMP" />
-    <result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP" />
-    <result column="receive_time" property="receiveTime" jdbcType="TIMESTAMP" />
-    <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
-    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="coupon_id" jdbcType="BIGINT" property="couponId" />
+    <result column="order_sn" jdbcType="VARCHAR" property="orderSn" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="member_username" jdbcType="VARCHAR" property="memberUsername" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="pay_amount" jdbcType="DECIMAL" property="payAmount" />
+    <result column="freight_amount" jdbcType="DECIMAL" property="freightAmount" />
+    <result column="promotion_amount" jdbcType="DECIMAL" property="promotionAmount" />
+    <result column="integration_amount" jdbcType="DECIMAL" property="integrationAmount" />
+    <result column="coupon_amount" jdbcType="DECIMAL" property="couponAmount" />
+    <result column="discount_amount" jdbcType="DECIMAL" property="discountAmount" />
+    <result column="pay_type" jdbcType="INTEGER" property="payType" />
+    <result column="source_type" jdbcType="INTEGER" property="sourceType" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="order_type" jdbcType="INTEGER" property="orderType" />
+    <result column="delivery_company" jdbcType="VARCHAR" property="deliveryCompany" />
+    <result column="delivery_sn" jdbcType="VARCHAR" property="deliverySn" />
+    <result column="auto_confirm_day" jdbcType="INTEGER" property="autoConfirmDay" />
+    <result column="integration" jdbcType="INTEGER" property="integration" />
+    <result column="growth" jdbcType="INTEGER" property="growth" />
+    <result column="promotion_info" jdbcType="VARCHAR" property="promotionInfo" />
+    <result column="bill_type" jdbcType="INTEGER" property="billType" />
+    <result column="bill_header" jdbcType="VARCHAR" property="billHeader" />
+    <result column="bill_content" jdbcType="VARCHAR" property="billContent" />
+    <result column="bill_receiver_phone" jdbcType="VARCHAR" property="billReceiverPhone" />
+    <result column="bill_receiver_email" jdbcType="VARCHAR" property="billReceiverEmail" />
+    <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
+    <result column="receiver_phone" jdbcType="VARCHAR" property="receiverPhone" />
+    <result column="receiver_post_code" jdbcType="VARCHAR" property="receiverPostCode" />
+    <result column="receiver_province" jdbcType="VARCHAR" property="receiverProvince" />
+    <result column="receiver_city" jdbcType="VARCHAR" property="receiverCity" />
+    <result column="receiver_region" jdbcType="VARCHAR" property="receiverRegion" />
+    <result column="receiver_detail_address" jdbcType="VARCHAR" property="receiverDetailAddress" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="confirm_status" jdbcType="INTEGER" property="confirmStatus" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="use_integration" jdbcType="INTEGER" property="useIntegration" />
+    <result column="payment_time" jdbcType="TIMESTAMP" property="paymentTime" />
+    <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
+    <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime" />
+    <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 </mapper>

@@ -1,40 +1,49 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "ums_member_tag")
 public class UmsMemberTag extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
+    @ApiModelProperty("")
     private String name;
 
     /**
      * 自动打标签完成订单数量
      */
     @Column(name = "finish_order_count")
+    @ApiModelProperty("自动打标签完成订单数量")
     private Integer finishOrderCount;
 
     /**
      * 自动打标签完成订单金额
      */
     @Column(name = "finish_order_amount")
+    @ApiModelProperty("自动打标签完成订单金额")
     private BigDecimal finishOrderAmount;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**

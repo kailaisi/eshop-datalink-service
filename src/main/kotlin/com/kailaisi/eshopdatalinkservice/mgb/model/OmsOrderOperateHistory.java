@@ -1,48 +1,58 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "oms_order_operate_history")
 public class OmsOrderOperateHistory extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
     /**
      * 订单id
      */
     @Column(name = "order_id")
+    @ApiModelProperty("订单id")
     private Long orderId;
 
     /**
      * 操作人：用户；系统；后台管理员
      */
     @Column(name = "operate_man")
+    @ApiModelProperty("操作人：用户；系统；后台管理员")
     private String operateMan;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**
      * 订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单
      */
     @Column(name = "order_status")
+    @ApiModelProperty("订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单")
     private Integer orderStatus;
 
     /**
      * 备注
      */
+    @ApiModelProperty("备注")
     private String note;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**

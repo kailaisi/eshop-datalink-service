@@ -1,35 +1,44 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "pms_product_full_reduction")
 public class PmsProductFullReduction extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
     @Column(name = "product_id")
+    @ApiModelProperty("")
     private Long productId;
 
     @Column(name = "full_price")
+    @ApiModelProperty("")
     private BigDecimal fullPrice;
 
     @Column(name = "reduce_price")
+    @ApiModelProperty("")
     private BigDecimal reducePrice;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**

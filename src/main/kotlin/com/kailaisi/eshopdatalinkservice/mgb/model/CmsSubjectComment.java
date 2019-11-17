@@ -1,39 +1,50 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "cms_subject_comment")
 public class CmsSubjectComment extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
     @Column(name = "subject_id")
+    @ApiModelProperty("")
     private Long subjectId;
 
     @Column(name = "member_nick_name")
+    @ApiModelProperty("")
     private String memberNickName;
 
     @Column(name = "member_icon")
+    @ApiModelProperty("")
     private String memberIcon;
 
+    @ApiModelProperty("")
     private String content;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     @Column(name = "show_status")
+    @ApiModelProperty("")
     private Integer showStatus;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**

@@ -1,48 +1,59 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "ums_role")
 public class UmsRole extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
     /**
      * 名称
      */
+    @ApiModelProperty("名称")
     private String name;
 
     /**
      * 描述
      */
+    @ApiModelProperty("描述")
     private String description;
 
     /**
      * 后台用户数量
      */
     @Column(name = "admin_count")
+    @ApiModelProperty("后台用户数量")
     private Integer adminCount;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**
      * 启用状态：0->禁用；1->启用
      */
+    @ApiModelProperty("启用状态：0->禁用；1->启用")
     private Integer status;
 
+    @ApiModelProperty("")
     private Integer sort;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**

@@ -1,39 +1,48 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "pms_product_attribute_category")
 public class PmsProductAttributeCategory extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
+    @ApiModelProperty("")
     private String name;
 
     /**
      * 属性数量
      */
     @Column(name = "attribute_count")
+    @ApiModelProperty("属性数量")
     private Integer attributeCount;
 
     /**
      * 参数数量
      */
     @Column(name = "param_count")
+    @ApiModelProperty("参数数量")
     private Integer paramCount;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**

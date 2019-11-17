@@ -1,44 +1,54 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "sms_flash_promotion")
 public class SmsFlashPromotion extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
+    @ApiModelProperty("")
     private String title;
 
     /**
      * 开始日期
      */
     @Column(name = "start_date")
+    @ApiModelProperty("开始日期")
     private Date startDate;
 
     /**
      * 结束日期
      */
     @Column(name = "end_date")
+    @ApiModelProperty("结束日期")
     private Date endDate;
 
     /**
      * 上下线状态
      */
+    @ApiModelProperty("上下线状态")
     private Integer status;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**

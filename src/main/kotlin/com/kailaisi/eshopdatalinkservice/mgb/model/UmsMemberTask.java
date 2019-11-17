@@ -1,42 +1,52 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "ums_member_task")
 public class UmsMemberTask extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
+    @ApiModelProperty("")
     private String name;
 
     /**
      * 赠送成长值
      */
+    @ApiModelProperty("赠送成长值")
     private Integer growth;
 
     /**
      * 赠送积分
      */
+    @ApiModelProperty("赠送积分")
     private Integer intergration;
 
     /**
      * 任务类型：0->新手任务；1->日常任务
      */
+    @ApiModelProperty("任务类型：0->新手任务；1->日常任务")
     private Integer type;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**

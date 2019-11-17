@@ -98,7 +98,7 @@ object IPUtils {
     }
 
     fun getServiceIp(): String {
-        var netInterfaces: Enumeration<NetworkInterface>? = null
+        var netInterfaces: Enumeration<NetworkInterface>?
         var ipsStr = ""
 
         try {

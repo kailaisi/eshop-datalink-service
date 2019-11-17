@@ -1,37 +1,48 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "pms_album")
 public class PmsAlbum extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
+    @ApiModelProperty("")
     private String name;
 
     @Column(name = "cover_pic")
+    @ApiModelProperty("")
     private String coverPic;
 
     @Column(name = "pic_count")
+    @ApiModelProperty("")
     private Integer picCount;
 
+    @ApiModelProperty("")
     private Integer sort;
 
+    @ApiModelProperty("")
     private String description;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**

@@ -1,41 +1,51 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "pms_product_vertify_record")
 public class PmsProductVertifyRecord extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
     @Column(name = "product_id")
+    @ApiModelProperty("")
     private Long productId;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**
      * 审核人
      */
     @Column(name = "vertify_man")
+    @ApiModelProperty("审核人")
     private String vertifyMan;
 
+    @ApiModelProperty("")
     private Integer status;
 
     /**
      * 反馈详情
      */
+    @ApiModelProperty("反馈详情")
     private String detail;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**

@@ -1,43 +1,54 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "cms_subject_category")
 public class CmsSubjectCategory extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("")
     private Long id;
 
+    @ApiModelProperty("")
     private String name;
 
     /**
      * 分类图标
      */
+    @ApiModelProperty("分类图标")
     private String icon;
 
     /**
      * 专题数量
      */
     @Column(name = "subject_count")
+    @ApiModelProperty("专题数量")
     private Integer subjectCount;
 
     @Column(name = "show_status")
+    @ApiModelProperty("")
     private Integer showStatus;
 
+    @ApiModelProperty("")
     private Integer sort;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**

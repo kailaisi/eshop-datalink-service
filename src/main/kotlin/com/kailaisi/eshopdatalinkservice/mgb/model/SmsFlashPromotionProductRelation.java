@@ -1,10 +1,13 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
 import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
+@ApiModel("")
 @Table(name = "sms_flash_promotion_product_relation")
 public class SmsFlashPromotionProductRelation extends BaseModel<Long> {
     /**
@@ -12,53 +15,63 @@ public class SmsFlashPromotionProductRelation extends BaseModel<Long> {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("编号")
     private Long id;
 
     @Column(name = "flash_promotion_id")
+    @ApiModelProperty("")
     private Long flashPromotionId;
 
     /**
      * 编号
      */
     @Column(name = "flash_promotion_session_id")
+    @ApiModelProperty("编号")
     private Long flashPromotionSessionId;
 
     @Column(name = "product_id")
+    @ApiModelProperty("")
     private Long productId;
 
     /**
      * 限时购价格
      */
     @Column(name = "flash_promotion_price")
+    @ApiModelProperty("限时购价格")
     private BigDecimal flashPromotionPrice;
 
     /**
      * 限时购数量
      */
     @Column(name = "flash_promotion_count")
+    @ApiModelProperty("限时购数量")
     private Integer flashPromotionCount;
 
     /**
      * 每人限购数量
      */
     @Column(name = "flash_promotion_limit")
+    @ApiModelProperty("每人限购数量")
     private Integer flashPromotionLimit;
 
     /**
      * 排序
      */
+    @ApiModelProperty("排序")
     private Integer sort;
 
     /**
      * 创建时间
      */
     @Column(name = "create_time")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
     /**
      * 更新时间
      */
     @Column(name = "update_time")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     /**
