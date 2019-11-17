@@ -2,8 +2,8 @@ package com.kailaisi.eshopdatalinkservice.control
 
 import com.kailaisi.eshopdatalinkservice.dto.CommonPage
 import com.kailaisi.eshopdatalinkservice.mgb.model.PmsBrand
-import com.kailaisi.eshopdatalinkservice.model.ResponseResult
-import com.kailaisi.eshopdatalinkservice.result.exception.BusinessException
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
 import com.kailaisi.eshopdatalinkservice.service.PmsBrandService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.annotation.Validated

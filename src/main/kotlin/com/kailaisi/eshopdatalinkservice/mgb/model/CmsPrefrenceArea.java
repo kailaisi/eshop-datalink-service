@@ -1,9 +1,11 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
+import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "cms_prefrence_area")
-public class CmsPrefrenceArea {
+public class CmsPrefrenceArea extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,6 +19,18 @@ public class CmsPrefrenceArea {
 
     @Column(name = "show_status")
     private Integer showStatus;
+
+    /**
+     * 创建时间
+     */
+    @Column(name = "create_time")
+    private Date createTime;
+
+    /**
+     * 更新时间
+     */
+    @Column(name = "update_time")
+    private Date updateTime;
 
     /**
      * 展示图片
@@ -91,6 +105,42 @@ public class CmsPrefrenceArea {
      */
     public void setShowStatus(Integer showStatus) {
         this.showStatus = showStatus;
+    }
+
+    /**
+     * 获取创建时间
+     *
+     * @return create_time - 创建时间
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * 设置创建时间
+     *
+     * @param createTime 创建时间
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    /**
+     * 获取更新时间
+     *
+     * @return update_time - 更新时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 设置更新时间
+     *
+     * @param updateTime 更新时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     /**

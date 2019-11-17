@@ -1,6 +1,7 @@
 package com.kailaisi.eshopdatalinkservice.service.commonservice
 
 import com.kailaisi.eshopdatalinkservice.dto.CommonPage
+import com.kailaisi.eshopdatalinkservice.model.qo.PageQO
 
 /**
  *描述：通用的查询接口
@@ -18,7 +19,7 @@ interface BaseSelectService<E, PK> {
      * 根据多个主键查询
      * @return 查询结果,如果无结果返回空集合
      */
-    fun selectByPks(list: List<PK>): List<E>
+    fun selectByPks(selectByPks: Iterable<PK>): List<E>
 
     /**
      * 查询所有的信息
@@ -30,5 +31,5 @@ interface BaseSelectService<E, PK> {
      * 查询所有结果
      * @return 获取分页结果
      */
-    fun selectPage(): CommonPage<*>
+    fun selectPage(pageQO: PageQO<*>): CommonPage<*>
 }

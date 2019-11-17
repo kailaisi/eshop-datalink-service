@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.result
+package com.kailaisi.eshopdatalinkservice.config.intercepter.result
 
 import com.kailaisi.eshopdatalinkservice.config.intercepter.HeaderParamsCheckInterceptor
 import com.kailaisi.eshopdatalinkservice.config.resolver.LoginUserArgumentResolver

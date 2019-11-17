@@ -1,10 +1,11 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
+import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "cms_subject")
-public class CmsSubject {
+public class CmsSubject extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +29,9 @@ public class CmsSubject {
     @Column(name = "recommend_status")
     private Integer recommendStatus;
 
+    /**
+     * 创建时间
+     */
     @Column(name = "create_time")
     private Date createTime;
 
@@ -65,6 +69,12 @@ public class CmsSubject {
      */
     @Column(name = "category_name")
     private String categoryName;
+
+    /**
+     * 更新时间
+     */
+    @Column(name = "update_time")
+    private Date updateTime;
 
     private String content;
 
@@ -161,14 +171,18 @@ public class CmsSubject {
     }
 
     /**
-     * @return create_time
+     * 获取创建时间
+     *
+     * @return create_time - 创建时间
      */
     public Date getCreateTime() {
         return createTime;
     }
 
     /**
-     * @param createTime
+     * 设置创建时间
+     *
+     * @param createTime 创建时间
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
@@ -300,6 +314,24 @@ public class CmsSubject {
      */
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    /**
+     * 获取更新时间
+     *
+     * @return update_time - 更新时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 设置更新时间
+     *
+     * @param updateTime 更新时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     /**

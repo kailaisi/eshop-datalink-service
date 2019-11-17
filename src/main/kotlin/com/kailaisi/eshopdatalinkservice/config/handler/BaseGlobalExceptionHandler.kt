@@ -1,8 +1,8 @@
 package com.kailaisi.eshopdatalinkservice.config.handler
 
-import com.kailaisi.eshopdatalinkservice.model.ResultCode
-import com.kailaisi.eshopdatalinkservice.result.exception.BusinessException
-import com.kailaisi.eshopdatalinkservice.result.DefaultErrorResult
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResultCode
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.DefaultErrorResult
 import com.kailaisi.eshopdatalinkservice.util.ParameterInvalidItemHelper
 import com.kailaisi.eshopdatalinkservice.util.logger
 import org.springframework.http.HttpStatus

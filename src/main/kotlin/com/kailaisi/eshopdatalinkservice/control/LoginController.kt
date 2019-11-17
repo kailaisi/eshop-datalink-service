@@ -1,9 +1,9 @@
 package com.kailaisi.eshopdatalinkservice.control
 
-import com.kailaisi.eshopdatalinkservice.model.LoginAuth
+import com.kailaisi.eshopdatalinkservice.config.intercepter.LoginAuth
 import com.kailaisi.eshopdatalinkservice.model.LoginQO
 import com.kailaisi.eshopdatalinkservice.model.LoginUser
-import com.kailaisi.eshopdatalinkservice.model.ResponseResult
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
 import com.kailaisi.eshopdatalinkservice.service.LoginService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping

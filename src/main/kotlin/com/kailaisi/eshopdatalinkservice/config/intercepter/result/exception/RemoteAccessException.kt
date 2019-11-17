@@ -1,6 +1,6 @@
-package com.kailaisi.eshopdatalinkservice.result.exception
+package com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception
 
-import com.kailaisi.eshopdatalinkservice.model.ResultCode
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResultCode
 
 /**
  *描述：

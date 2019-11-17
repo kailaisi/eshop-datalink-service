@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.model
+package com.kailaisi.eshopdatalinkservice.config.intercepter
 
 @Target(AnnotationTarget.CLASS,AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)

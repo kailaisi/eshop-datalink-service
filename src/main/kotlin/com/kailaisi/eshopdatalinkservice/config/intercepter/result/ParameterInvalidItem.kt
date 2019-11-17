@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.model
+package com.kailaisi.eshopdatalinkservice.config.intercepter.result
 
 /**
  *描述：

@@ -1,13 +1,14 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
+import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "sms_flash_promotion_log")
-public class SmsFlashPromotionLog {
+public class SmsFlashPromotionLog extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "member_id")
     private Integer memberId;
@@ -31,19 +32,16 @@ public class SmsFlashPromotionLog {
     private Date sendTime;
 
     /**
-     * @return id
+     * 更新时间
      */
-    public Integer getId() {
-        return id;
-    }
+    @Column(name = "update_time")
+    private Date updateTime;
 
     /**
-     * @param id
+     * 创建时间
      */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    @Column(name = "create_time")
+    private Date createTime;
     /**
      * @return member_id
      */
@@ -130,5 +128,51 @@ public class SmsFlashPromotionLog {
      */
     public void setSendTime(Date sendTime) {
         this.sendTime = sendTime;
+    }
+
+    /**
+     * 获取更新时间
+     *
+     * @return update_time - 更新时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 设置更新时间
+     *
+     * @param updateTime 更新时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    /**
+     * 获取创建时间
+     *
+     * @return create_time - 创建时间
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * 设置创建时间
+     *
+     * @param createTime 创建时间
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long aLong) {
+
     }
 }

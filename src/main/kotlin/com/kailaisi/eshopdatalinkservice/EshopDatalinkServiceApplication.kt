@@ -12,7 +12,7 @@ import tk.mybatis.spring.annotation.MapperScan
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients
-@MapperScan(basePackages = ["com.kailaisi.eshopdatalinkservice.mapper"])
+@MapperScan(basePackages = ["com.kailaisi.eshopdatalinkservice.mgb.mapper"])
 class EshopDatalinkServiceApplication {
     @Bean
     fun jedis(): JedisPool {
@@ -21,7 +21,7 @@ class EshopDatalinkServiceApplication {
         config.maxIdle = 5
         config.maxWaitMillis = 1000 * 100
         config.testOnBorrow = true
-        return JedisPool(config, "192.168.8.129", 6379)
+        return JedisPool(config, "192.168.1.5", 6379)
     }
 }
 

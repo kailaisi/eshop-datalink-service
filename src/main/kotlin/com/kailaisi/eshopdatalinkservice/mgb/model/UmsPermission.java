@@ -1,10 +1,11 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
+import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "ums_permission")
-public class UmsPermission {
+public class UmsPermission extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -54,6 +55,12 @@ public class UmsPermission {
      * 排序
      */
     private Integer sort;
+
+    /**
+     * 更新时间
+     */
+    @Column(name = "update_time")
+    private Date updateTime;
 
     /**
      * @return id
@@ -229,5 +236,23 @@ public class UmsPermission {
      */
     public void setSort(Integer sort) {
         this.sort = sort;
+    }
+
+    /**
+     * 获取更新时间
+     *
+     * @return update_time - 更新时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 设置更新时间
+     *
+     * @param updateTime 更新时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

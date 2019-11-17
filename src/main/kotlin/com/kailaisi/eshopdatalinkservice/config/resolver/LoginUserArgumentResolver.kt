@@ -1,6 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.config.resolver
 
-import com.kailaisi.eshopdatalinkservice.model.LoginAuth
+import com.kailaisi.eshopdatalinkservice.config.intercepter.LoginAuth
 import com.kailaisi.eshopdatalinkservice.model.LoginUser
 import com.kailaisi.eshopdatalinkservice.util.LoginTokenHelper
 import org.springframework.core.MethodParameter

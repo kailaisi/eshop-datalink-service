@@ -1,5 +1,7 @@
-package com.kailaisi.eshopdatalinkservice.model
+package com.kailaisi.eshopdatalinkservice.config.intercepter.result
 
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.PlatformResult
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.Result
 import kotlin.reflect.KClass
 
 /**

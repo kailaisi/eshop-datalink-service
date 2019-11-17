@@ -2,8 +2,8 @@ package com.kailaisi.eshopdatalinkservice.config.intercepter
 
 import com.kailaisi.eshopdatalinkservice.model.CallSourceEnum
 import com.kailaisi.eshopdatalinkservice.model.HeaderConstants
-import com.kailaisi.eshopdatalinkservice.model.ResultCode
-import com.kailaisi.eshopdatalinkservice.result.exception.BusinessException
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResultCode
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
 import org.springframework.stereotype.Component
 import org.springframework.web.method.HandlerMethod
 import org.springframework.web.servlet.HandlerInterceptor

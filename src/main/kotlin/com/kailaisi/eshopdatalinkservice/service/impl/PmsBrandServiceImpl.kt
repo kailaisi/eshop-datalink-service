@@ -33,7 +33,7 @@ class PmsBrandServiceImpl : PmsBrandService {
     }
 
     override fun updateBrand(id: Long, pmsBrand: PmsBrand): Int {
-        pmsBrand.id=id
+        pmsBrand.setId(id)
         return  pmsBrandMapper.updateByPrimaryKeySelective(pmsBrand)
     }
 

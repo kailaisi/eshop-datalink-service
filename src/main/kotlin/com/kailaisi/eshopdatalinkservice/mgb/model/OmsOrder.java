@@ -1,11 +1,12 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
+import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "oms_order")
-public class OmsOrder {
+public class OmsOrder extends BaseModel<Long> {
     /**
      * 订单id
      */
@@ -26,7 +27,7 @@ public class OmsOrder {
     private String orderSn;
 
     /**
-     * 提交时间
+     * 创建时间
      */
     @Column(name = "create_time")
     private Date createTime;
@@ -262,6 +263,12 @@ public class OmsOrder {
     private Date modifyTime;
 
     /**
+     * 更新时间
+     */
+    @Column(name = "update_time")
+    private Date updateTime;
+
+    /**
      * 获取订单id
      *
      * @return id - 订单id
@@ -326,18 +333,18 @@ public class OmsOrder {
     }
 
     /**
-     * 获取提交时间
+     * 获取创建时间
      *
-     * @return create_time - 提交时间
+     * @return create_time - 创建时间
      */
     public Date getCreateTime() {
         return createTime;
     }
 
     /**
-     * 设置提交时间
+     * 设置创建时间
      *
-     * @param createTime 提交时间
+     * @param createTime 创建时间
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
@@ -1043,5 +1050,23 @@ public class OmsOrder {
      */
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
+    }
+
+    /**
+     * 获取更新时间
+     *
+     * @return update_time - 更新时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 设置更新时间
+     *
+     * @param updateTime 更新时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

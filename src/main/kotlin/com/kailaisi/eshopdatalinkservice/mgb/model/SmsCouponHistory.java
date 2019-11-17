@@ -1,10 +1,11 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
+import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "sms_coupon_history")
-public class SmsCouponHistory {
+public class SmsCouponHistory extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,6 +31,9 @@ public class SmsCouponHistory {
     @Column(name = "get_type")
     private Integer getType;
 
+    /**
+     * 创建时间
+     */
     @Column(name = "create_time")
     private Date createTime;
 
@@ -56,6 +60,12 @@ public class SmsCouponHistory {
      */
     @Column(name = "order_sn")
     private String orderSn;
+
+    /**
+     * 更新时间
+     */
+    @Column(name = "update_time")
+    private Date updateTime;
 
     /**
      * @return id
@@ -150,14 +160,18 @@ public class SmsCouponHistory {
     }
 
     /**
-     * @return create_time
+     * 获取创建时间
+     *
+     * @return create_time - 创建时间
      */
     public Date getCreateTime() {
         return createTime;
     }
 
     /**
-     * @param createTime
+     * 设置创建时间
+     *
+     * @param createTime 创建时间
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
@@ -233,5 +247,23 @@ public class SmsCouponHistory {
      */
     public void setOrderSn(String orderSn) {
         this.orderSn = orderSn;
+    }
+
+    /**
+     * 获取更新时间
+     *
+     * @return update_time - 更新时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 设置更新时间
+     *
+     * @param updateTime 更新时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

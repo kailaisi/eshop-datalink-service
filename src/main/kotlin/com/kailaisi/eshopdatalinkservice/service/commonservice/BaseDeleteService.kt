@@ -11,5 +11,5 @@ interface BaseDeleteService<PK> {
      */
     fun deleteByPk(pk: PK): Int
 
-    fun deleteByPks(list: List<PK>): Int
+    fun deleteByPks(list: Iterable<PK>): Int
 }

@@ -1,9 +1,7 @@
-package com.kailaisi.eshopdatalinkservice.result
+package com.kailaisi.eshopdatalinkservice.config.intercepter.result
 
-import com.kailaisi.eshopdatalinkservice.model.Result
-import com.kailaisi.eshopdatalinkservice.model.ResultCode
-import com.kailaisi.eshopdatalinkservice.result.exception.BusinessException
-import com.kailaisi.eshopdatalinkservice.result.exception.BusinessExceptionEnum
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessExceptionEnum
 import com.kailaisi.eshopdatalinkservice.util.RequestContextHolderUtil
 import org.springframework.http.HttpStatus
 import java.util.*
@@ -80,7 +78,7 @@ class DefaultErrorResult : Result {
             if (ee != null) {
                 return failure(ee.resultCode, e, ee.httpStatus)
             }
-            val failure = DefaultErrorResult.failure(e.resultCode ?: ResultCode.SUCCESS, e, HttpStatus.OK, e.data)
+            val failure = failure(e.resultCode ?: ResultCode.SUCCESS, e, HttpStatus.OK, e.data)
             e.message?.let { failure.message = it }
             return failure
         }

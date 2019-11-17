@@ -1,7 +1,7 @@
 package com.kailaisi.eshopdatalinkservice.config.handler
 
-import com.kailaisi.eshopdatalinkservice.result.exception.BusinessException
-import com.kailaisi.eshopdatalinkservice.result.DefaultErrorResult
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.DefaultErrorResult
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice

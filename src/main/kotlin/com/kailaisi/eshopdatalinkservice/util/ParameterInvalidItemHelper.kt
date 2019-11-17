@@ -1,6 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.util
 
-import com.kailaisi.eshopdatalinkservice.model.ParameterInvalidItem
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ParameterInvalidItem
 import org.springframework.util.CollectionUtils
 import org.springframework.validation.BindingResult
 import javax.validation.ConstraintViolation

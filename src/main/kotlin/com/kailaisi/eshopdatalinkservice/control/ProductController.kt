@@ -1,7 +1,7 @@
 package com.kailaisi.eshopdatalinkservice.control
 
 import com.alibaba.fastjson.JSONObject
-import com.kailaisi.eshopdatalinkservice.model.ResponseResult
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
 import com.kailaisi.eshopdatalinkservice.service.CacheService
 import com.kailaisi.eshopdatalinkservice.service.EshopProductService
 import org.springframework.beans.factory.annotation.Autowired

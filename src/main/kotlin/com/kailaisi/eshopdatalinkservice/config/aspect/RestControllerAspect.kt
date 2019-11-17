@@ -42,7 +42,7 @@ class RestControllerAspect {
         val request = RequestContextHolderUtil.request
         val ip = IPUtils.getRealIp(request)
         val user = LoginTokenHelper.loginUserFromRequest
-        val requester = user?.id ?: "unknown"
+        val requester = IPUtils.getRealIp(request) ?: "unknown"
         val callSource = request.getHeader(HeaderConstants.CALL_SOURCE)
         val appVersion = request.getHeader(HeaderConstants.APP_VERSION)
         val apiVersion = request.getHeader(HeaderConstants.API_VERSION)

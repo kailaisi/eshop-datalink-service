@@ -9,25 +9,24 @@ spring:
     name: datalink-server
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     platform: mysql
-    url: jdbc:mysql://localhost:3306/eshop
+    url: jdbc:mysql://localhost:3306/mall?serverTimezone=UTC
     username: root
-    password: 03102896528
+    password: 123456
     druid:
       initial-size: 5 #连接池初始化大小
       min-idle: 10 #最小空闲连接数
       max-active: 20 #最大连接数
       web-stat-filter:
-      exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
-      stat-view-servlet: #访问监控网页的登录用户名和密码
-      login-username: druid
-      login-password: druid
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+        stat-view-servlet: #访问监控网页的登录用户名和密码
+          login-username: druid
+          login-password: druid
   redis:
     host: localhost
     database: 0
     port: 6379
-    password: 123456
     jedis:
       pool:
         max-active: 8
@@ -35,6 +34,8 @@ spring:
         max-idle: 8
         min-idle: 0
     timeout: 3000
+
+
 logging:
   path: "D:/gongcheng/web/eshop-datalink-service/log/"
   file: "weblog.log"
@@ -44,7 +45,7 @@ mybatis:
     - classpath*:com/**/mapper/*.xml
 mapper:
   mappers:
-    - com.kailaisi.eshopdatalinkservice.config.mapper.MyMapper
+    - com.kailaisi.eshopdatalinkservice.config.mapper.CrudMapper
   not-empty: true
 pagehelper:
   helperDialect: mysql
