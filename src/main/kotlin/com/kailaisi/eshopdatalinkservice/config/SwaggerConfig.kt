@@ -2,6 +2,8 @@ package com.kailaisi.eshopdatalinkservice.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport
 import springfox.documentation.builders.ApiInfoBuilder
 import springfox.documentation.builders.RequestHandlerSelectors
 import springfox.documentation.service.ApiInfo
@@ -17,7 +19,7 @@ import tk.mybatis.mapper.generator.MapperPlugin
  */
 @Configuration
 @EnableSwagger2
-class SwaggerConfig {
+class SwaggerConfig : WebMvcConfigurationSupport() {
     @Bean
     fun createRestApi(): Docket {
         return Docket(DocumentationType.SWAGGER_2)
@@ -34,5 +36,15 @@ class SwaggerConfig {
                 .contact("macro")
                 .version("1.0.0")
                 .build()
+    }
+
+    override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
+        super.addResourceHandlers(registry)
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+        // 解决swagger无法访问
+        registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        // 解决swagger的js文件无法访问
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+
     }
 }
