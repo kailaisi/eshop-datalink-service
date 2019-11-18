@@ -1,6 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
-import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import com.kailaisi.eshopdatalinkservice.mgb.BasePO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @ApiModel("")
 @Table(name = "sms_home_recommend_subject")
-public class SmsHomeRecommendSubject extends BaseModel<Long> {
+public class SmsHomeRecommendSubject extends BasePO<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("")

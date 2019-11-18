@@ -6,5 +6,5 @@ package com.kailaisi.eshopdatalinkservice.mgb
  * 作者：wu
  * <br></br>创建时间：2019/11/16 16:14
  */
-abstract class BaseModel<PK> : Model<PK> {
+abstract class BasePO<PK> : Model<PK> {
 }

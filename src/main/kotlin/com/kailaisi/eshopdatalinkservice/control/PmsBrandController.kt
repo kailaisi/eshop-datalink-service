@@ -1,9 +1,10 @@
 package com.kailaisi.eshopdatalinkservice.control
 
-import com.kailaisi.eshopdatalinkservice.dto.CommonPage
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
 import com.kailaisi.eshopdatalinkservice.mgb.model.PmsBrand
+import com.kailaisi.eshopdatalinkservice.model.qo.PageQO
+import com.kailaisi.eshopdatalinkservice.model.vo.CommonPage
 import com.kailaisi.eshopdatalinkservice.service.PmsBrandService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
@@ -28,23 +29,23 @@ class PmsBrandController {
     @ApiOperation("获取所有的品牌列表信息")
     @GetMapping("listAll")
     fun getBrandList(): List<PmsBrand> {
-        return mService.listAllBrand()
+        return mService.selectAll()
     }
 
     @ApiOperation("生成品牌信息")
     @PostMapping("/create")
     fun createBrand(@Validated @RequestBody pmsBrand: PmsBrand): PmsBrand {
-        val count = mService.creatBrand(pmsBrand)
+        val count = mService.insert(pmsBrand)
         return when (count) {
-            1 -> pmsBrand
-            else -> throw BusinessException("createBrand failed:{${pmsBrand}}")
+            null -> throw BusinessException("createBrand failed:{${pmsBrand}}")
+            else -> pmsBrand
         }
     }
 
     @ApiOperation("更新指定ID的品牌信息")
     @PostMapping("/update/{id}")
     fun update(@PathVariable("id") id: Long, @Validated @RequestBody pmsBrand: PmsBrand): String {
-        val count = mService.updateBrand(id, pmsBrand)
+        val count = mService.updateByPk(id, pmsBrand)
         return when (count) {
             1 -> "更新id=${id}数据成功"
             else -> throw BusinessException("updateBrand failed:{${pmsBrand}}")
@@ -54,7 +55,7 @@ class PmsBrandController {
     @ApiOperation("删除指定Id的品牌信息")
     @GetMapping("/delete/{id}")
     fun delete(@Validated @PathVariable("id") id: Long): String {
-        val count = mService.deleteBrand(id)
+        val count = mService.deleteByPk(id)
         return when (count) {
             1 -> "删除数据成功"
             else -> throw BusinessException("deleteBrand failed :id={$id}")
@@ -64,11 +65,7 @@ class PmsBrandController {
     @ApiOperation("分页查询品牌列表")
     @GetMapping(value = ["/list"])
     @ResponseBody
-    fun getList(@RequestParam(value = "keyword", required = false) keyword: String,
-                @RequestParam(value = "pageNum", defaultValue = "1") pageNum: Int,
-                @RequestParam(value = "pageSize", defaultValue = "5") pageSize: Int): CommonPage<PmsBrand> {
-        val brandList = mService.listBrand(keyword, pageNum, pageSize)
-        return CommonPage.restPage(brandList)
+    fun getList(@RequestParam pageQO: PageQO<*>): CommonPage<PmsBrand> {
+        return mService.selectPage(pageQO)
     }
-
 }

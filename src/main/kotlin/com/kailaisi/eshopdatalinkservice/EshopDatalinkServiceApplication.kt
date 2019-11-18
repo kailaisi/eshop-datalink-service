@@ -21,7 +21,7 @@ class EshopDatalinkServiceApplication {
         config.maxIdle = 5
         config.maxWaitMillis = 1000 * 100
         config.testOnBorrow = true
-        return JedisPool(config, "192.168.1.5", 6379)
+        return JedisPool(config, "127.0.0.1", 6379)
     }
 }
 

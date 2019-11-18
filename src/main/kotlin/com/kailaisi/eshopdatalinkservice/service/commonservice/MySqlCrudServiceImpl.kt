@@ -2,9 +2,9 @@ package com.kailaisi.eshopdatalinkservice.service.commonservice
 
 import com.github.pagehelper.PageHelper
 import com.kailaisi.eshopdatalinkservice.config.mapper.CrudMapper
-import com.kailaisi.eshopdatalinkservice.dto.CommonPage
-import com.kailaisi.eshopdatalinkservice.mgb.BaseModel
+import com.kailaisi.eshopdatalinkservice.mgb.BasePO
 import com.kailaisi.eshopdatalinkservice.model.qo.PageQO
+import com.kailaisi.eshopdatalinkservice.model.vo.CommonPage
 import org.springframework.beans.BeanUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.util.Assert
@@ -18,7 +18,7 @@ import java.util.*
  *<p/>作者：wu
  *<br/>创建时间：2019/11/14 16:39
  */
-open class MySqlCrudServiceImpl<E : BaseModel<PK>, PK> : CrudService<E, PK> {
+open class MySqlCrudServiceImpl<E : BasePO<PK>, PK> : CrudService<E, PK> {
 
     @Autowired
     lateinit var crudMapper: CrudMapper<E>
@@ -49,7 +49,7 @@ open class MySqlCrudServiceImpl<E : BaseModel<PK>, PK> : CrudService<E, PK> {
         return crudMapper.selectAll()
     }
 
-    override fun selectPage(pageQO: PageQO<*>): CommonPage<*> {
+    override fun selectPage(pageQO: PageQO<*>): CommonPage<E> {
         var page = PageHelper.startPage<E>(pageQO.pageNum, pageQO.pageSize)
         try {
             var condition = pageQO.condition

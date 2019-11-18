@@ -1,6 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
-import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import com.kailaisi.eshopdatalinkservice.mgb.BasePO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @ApiModel("")
 @Table(name = "ums_member_level")
-public class UmsMemberLevel extends BaseModel<Long> {
+public class UmsMemberLevel extends BasePO<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("")

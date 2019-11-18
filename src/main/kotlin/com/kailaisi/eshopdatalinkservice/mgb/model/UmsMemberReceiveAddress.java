@@ -1,6 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.mgb.model;
 
-import com.kailaisi.eshopdatalinkservice.mgb.BaseModel;
+import com.kailaisi.eshopdatalinkservice.mgb.BasePO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @ApiModel("")
 @Table(name = "ums_member_receive_address")
-public class UmsMemberReceiveAddress extends BaseModel<Long> {
+public class UmsMemberReceiveAddress extends BasePO<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("")
