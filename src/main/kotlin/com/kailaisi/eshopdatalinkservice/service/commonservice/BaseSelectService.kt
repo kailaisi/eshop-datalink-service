@@ -19,7 +19,7 @@ interface BaseSelectService<E, PK> {
      * 根据多个主键查询
      * @return 查询结果,如果无结果返回空集合
      */
-    fun selectByPks(selectByPks: Iterable<PK>): List<E>
+    fun selectByPks(pks: Iterable<PK>): List<E>
 
     /**
      * 查询所有的信息

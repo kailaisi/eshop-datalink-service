@@ -35,9 +35,9 @@ open class MySqlCrudServiceImpl<E : BasePO<PK>, PK> : CrudService<E, PK> {
         return crudMapper.selectByPrimaryKey(pk)
     }
 
-    override fun selectByPks(list: Iterable<PK>): List<E> {
-        Assert.notNull(list, "pks can not be null")
-        val pksStr = list.joinToString(separator = ",", transform = { it.toString() })
+    override fun selectByPks(pks: Iterable<PK>): List<E> {
+        Assert.notNull(pks, "pks can not be null")
+        val pksStr = pks.joinToString(separator = ",", transform = { it.toString() })
         return if (pksStr.isBlank()) {
             emptyList()
         } else {
