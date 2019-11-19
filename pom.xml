@@ -154,11 +154,6 @@
             <artifactId>mapper</artifactId>
             <version>4.1.5</version>
         </dependency>
-        <!--SpringSecurity依赖配置-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
         <!--Hutool Java工具包-->
         <dependency>
             <groupId>cn.hutool</groupId>

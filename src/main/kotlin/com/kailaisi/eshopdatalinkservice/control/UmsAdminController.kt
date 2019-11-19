@@ -1,15 +1,14 @@
 package com.kailaisi.eshopdatalinkservice.control
 
 import com.kailaisi.eshopdatalinkservice.config.intercepter.LoginAuth
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
 import com.kailaisi.eshopdatalinkservice.model.LoginQO
 import com.kailaisi.eshopdatalinkservice.model.LoginUser
-import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
-import com.kailaisi.eshopdatalinkservice.service.LoginService
+import com.kailaisi.eshopdatalinkservice.model.qo.UmsAdminRegisterQO
+import com.kailaisi.eshopdatalinkservice.service.UmsAdminService
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 /**
  *描述：用户信息接口
@@ -18,19 +17,25 @@ import org.springframework.web.bind.annotation.RestController
  */
 @ResponseResult
 @RestController
-@RequestMapping("/user")
-class LoginController {
+@RequestMapping("/admin")
+class UmsAdminController {
     @Autowired
-    lateinit var loginService: LoginService
+    lateinit var umsAdminService:  UmsAdminService
+
+    @PostMapping("/register")
+    @ApiOperation("用户注册")
+    fun register(@RequestBody umsAdminQO: UmsAdminRegisterQO){
+        umsAdminService.register(umsAdminQO)
+    }
 
     @RequestMapping("/login")
     fun login(@RequestBody loginQO: LoginQO) {
-        loginService.login(loginQO)
+        umsAdminService.login(loginQO)
     }
 
     @RequestMapping("/logout")
     fun logout() {
-        loginService.logout()
+        umsAdminService.logout()
     }
 
     @LoginAuth
