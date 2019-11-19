@@ -27,7 +27,7 @@ class PmsBrandController {
     lateinit var mService: PmsBrandService
 
     @ApiOperation("获取所有的品牌列表信息")
-    @GetMapping("listAll")
+    @GetMapping("/listAll")
     fun getBrandList(): List<PmsBrand> {
         return mService.selectAll()
     }
@@ -63,9 +63,8 @@ class PmsBrandController {
     }
 
     @ApiOperation("分页查询品牌列表")
-    @GetMapping(value = ["/list"])
-    @ResponseBody
-    fun getList(@RequestParam pageQO: PageQO<*>): CommonPage<PmsBrand> {
+    @PostMapping(value = ["/list"])
+    fun getList(@RequestBody pageQO: PageQO<*>): CommonPage<PmsBrand> {
         return mService.selectPage(pageQO)
     }
 }

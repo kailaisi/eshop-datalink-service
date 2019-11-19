@@ -2,8 +2,8 @@ package com.kailaisi.eshopdatalinkservice.model.vo
 
 import com.github.pagehelper.Page
 import com.github.pagehelper.PageInfo
+import com.kailaisi.eshopdatalinkservice.mgb.Model
 import com.kailaisi.eshopdatalinkservice.model.qo.PageQO
-import com.kailaisi.eshopdatalinkservice.util.logger
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 import org.springframework.beans.BeanUtils
@@ -14,8 +14,7 @@ import kotlin.math.ceil
  * Created by wu on 2019/4/19.
  */
 @ApiModel("分页返回数据集")
-class CommonPage<T>() {
-    val log = logger(this)
+class CommonPage<T>():Model {
     @ApiModelProperty("当前页号")
     var pageNum: Int = 0
     @ApiModelProperty("每页的数量")
