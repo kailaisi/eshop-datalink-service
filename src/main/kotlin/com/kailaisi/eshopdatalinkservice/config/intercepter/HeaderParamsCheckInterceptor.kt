@@ -1,9 +1,9 @@
 package com.kailaisi.eshopdatalinkservice.config.intercepter
 
-import com.kailaisi.eshopdatalinkservice.model.CallSourceEnum
-import com.kailaisi.eshopdatalinkservice.model.HeaderConstants
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResultCode
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
+import com.kailaisi.eshopdatalinkservice.model.CallSourceEnum
+import com.kailaisi.eshopdatalinkservice.model.HeaderConstants
 import org.springframework.stereotype.Component
 import org.springframework.web.method.HandlerMethod
 import org.springframework.web.servlet.HandlerInterceptor
@@ -24,18 +24,18 @@ class HeaderParamsCheckInterceptor : HandlerInterceptor {
             val apiVersion = request.getHeader(HeaderConstants.API_VERSION)
             val appVersion = request.getHeader(HeaderConstants.APP_VERSION)
             if (callSource.isNullOrBlank() || apiVersion.isNullOrBlank()) {
-                throw BusinessException(ResultCode.PARAM_NOT_COMPLETE)
+                throw BusinessException(ResultCode.HEADER_NOT_COMPLETE)
             }
             try {
                 apiVersion.toDouble()
             } catch (e: NumberFormatException) {
-                throw  BusinessException(ResultCode.PARAM_IS_INVALID)
+                throw  BusinessException(ResultCode.HEADER_ERROR)
             }
             if ((CallSourceEnum.ANDROID.name == callSource || CallSourceEnum.IOS.name == callSource) && StringUtil.isEmpty(appVersion)) {
-                throw  BusinessException(ResultCode.PARAM_NOT_COMPLETE)
+                throw  BusinessException(ResultCode.HEADER_ERROR)
             }
             if (!CallSourceEnum.isValid(callSource)) {
-                throw  BusinessException(ResultCode.PARAM_IS_INVALID)
+                throw  BusinessException(ResultCode.HEADER_ERROR)
             }
         }
         return true

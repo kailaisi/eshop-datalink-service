@@ -16,6 +16,8 @@ enum class ResultCode(val code: Int, val msg: String) {
     PARAM_IS_BLANK(10002, "参数为空"),
     PARAM_TYPE_BIND_ERROR(10003, "参数类型错误"),
     PARAM_NOT_COMPLETE(10004, "参数缺失"),
+    HEADER_NOT_COMPLETE(10005, "请求头信息缺失"),
+    HEADER_ERROR(10006, "请求头信息错误"),
 
     /* 用户错误：20001-29999*/
     USER_NOT_LOGGED_IN(20001, "用户未登录"),
@@ -54,37 +56,3 @@ enum class ResultCode(val code: Int, val msg: String) {
 interface Result : Serializable
 
 
-data class PlatformResult(var data: Any? = null) : Result {
-    var result: Int = 1
-    var code: Int? = null
-    var msg: String? = null
-    private fun setResultCode(resultCode: ResultCode): PlatformResult {
-        msg = resultCode.msg
-        code = resultCode.code
-        return this
-    }
-
-    companion object {
-        fun success() = PlatformResult().setResultCode(ResultCode.SUCCESS).let { it.result = 1 }
-        fun success(data: Any?): PlatformResult {
-            var result = PlatformResult().setResultCode(ResultCode.SUCCESS)
-            result.data = data
-            result.result = 1
-            return result
-        }
-
-        fun failure(resultCode: ResultCode) = PlatformResult().setResultCode(resultCode)
-        fun failure(resultCode: ResultCode, data: Any?) = PlatformResult().setResultCode(resultCode).let {
-            it.data = data
-            it.result = 0
-        }
-
-        fun failure(message: String) {
-            PlatformResult().apply {
-                code = ResultCode.PARAM_IS_INVALID.code
-                msg = message
-                result = 0
-            }
-        }
-    }
-}
