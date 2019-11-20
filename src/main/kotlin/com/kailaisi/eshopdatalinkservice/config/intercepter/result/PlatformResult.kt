@@ -24,14 +24,22 @@ data class PlatformResult(var data: Any? = null) : Result {
             return result
         }
 
-        fun failure(resultCode: ResultCode) = PlatformResult().setResultCode(resultCode)
-        fun failure(resultCode: ResultCode, data: Any?) = PlatformResult().setResultCode(resultCode).let {
-            it.data = data
-            it.result = 0
+        fun failure(resultCode: ResultCode): PlatformResult {
+            val result = PlatformResult().setResultCode(resultCode)
+            result.result = 0
+            return result
         }
 
-        fun failure(message: String) {
-            PlatformResult().apply {
+
+        fun failure(resultCode: ResultCode, data: Any?): PlatformResult {
+            val result = PlatformResult().setResultCode(resultCode)
+            result.data = data
+            result.result = 0
+            return result
+        }
+
+        fun failure(message: String): PlatformResult {
+            return PlatformResult().apply {
                 code = ResultCode.PARAM_IS_INVALID.code
                 msg = message
                 result = 0

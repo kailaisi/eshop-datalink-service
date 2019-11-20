@@ -19,8 +19,8 @@ class ResultResponseInterceptor :HandlerInterceptor{
     }
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
         if(handler is HandlerMethod){
-            var clazz = handler.beanType
-            var method = handler.method
+            val clazz = handler.beanType
+            val method = handler.method
             if (clazz.isAnnotationPresent(ResponseResult::class.java)) {
                 request.setAttribute(RESPONSE_RESULT,clazz.getAnnotation(ResponseResult::class.java))
             }else if(method.isAnnotationPresent(ResponseResult::class.java)){

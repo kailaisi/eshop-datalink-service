@@ -1,7 +1,8 @@
 package com.kailaisi.eshopdatalinkservice.config
 
+import cn.hutool.json.JSONUtil
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.PlatformResult
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResultCode
-import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
 import org.springframework.security.access.AccessDeniedException
 import org.springframework.security.web.access.AccessDeniedHandler
 import org.springframework.stereotype.Component
@@ -15,7 +16,12 @@ import javax.servlet.http.HttpServletResponse
  */
 @Component
 class RestfulAccessDeniedHandler : AccessDeniedHandler {
-    override fun handle(p0: HttpServletRequest?, p1: HttpServletResponse?, p2: AccessDeniedException?) {
-        throw throw BusinessException(ResultCode.USER_NOT_LOGGED_IN)
+    override fun handle(requset: HttpServletRequest, response: HttpServletResponse, e: AccessDeniedException) {
+        val platformResult = PlatformResult.failure(ResultCode.PERMISSION_NO_ACCESS)
+        response.status = 200
+        response.characterEncoding = "UTF-8"
+        response.contentType = "application/json; charset=utf-8"
+        response.writer
+        response.writer.write(JSONUtil.toJsonStr(platformResult))
     }
 }
