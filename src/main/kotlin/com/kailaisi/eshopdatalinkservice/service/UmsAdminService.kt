@@ -7,7 +7,7 @@ import com.kailaisi.eshopdatalinkservice.service.commonservice.CrudService
 
 interface UmsAdminService : CrudService<UmsAdmin, Long> {
     fun getAdminByUserName(it: String): List<UmsAdmin>?
-    fun login(loginQO: LoginQO)
+    fun login(loginQO: LoginQO): String
     fun logout()
     /**
      * 注册

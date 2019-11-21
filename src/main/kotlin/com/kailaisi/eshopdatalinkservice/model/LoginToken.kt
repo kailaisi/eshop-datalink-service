@@ -20,7 +20,7 @@ class LoginToken {
      */
     var platform: String? = null
 
-    var createTime: Date? = null
+    lateinit var createTime: Date
 
     var loginUser: LoginUser? = null
 

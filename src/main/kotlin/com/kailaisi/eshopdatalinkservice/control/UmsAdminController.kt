@@ -20,17 +20,17 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/admin")
 class UmsAdminController {
     @Autowired
-    lateinit var umsAdminService:  UmsAdminService
+    lateinit var umsAdminService: UmsAdminService
 
     @PostMapping("/register")
     @ApiOperation("用户注册")
-    fun register(@RequestBody umsAdminQO: UmsAdminRegisterQO){
+    fun register(@RequestBody umsAdminQO: UmsAdminRegisterQO) {
         umsAdminService.register(umsAdminQO)
     }
 
     @RequestMapping("/login")
-    fun login(@RequestBody loginQO: LoginQO) {
-        umsAdminService.login(loginQO)
+    fun login(@RequestBody loginQO: LoginQO): String {
+        return umsAdminService.login(loginQO)
     }
 
     @RequestMapping("/logout")

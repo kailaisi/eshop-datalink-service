@@ -1,6 +1,7 @@
 package com.kailaisi.eshopdatalinkservice.control
 
 import com.alibaba.fastjson.JSONObject
+import com.kailaisi.eshopdatalinkservice.config.intercepter.LoginAuth
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
 import com.kailaisi.eshopdatalinkservice.service.CacheService
 import com.kailaisi.eshopdatalinkservice.service.EshopProductService
@@ -16,6 +17,7 @@ import redis.clients.jedis.JedisPool
  */
 @ResponseResult
 @RestController
+@LoginAuth
 class ProductController {
     lateinit var productService: EshopProductService
     @Autowired

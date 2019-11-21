@@ -1,5 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.control
 
+import com.kailaisi.eshopdatalinkservice.config.intercepter.LoginAuth
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
 import com.kailaisi.eshopdatalinkservice.service.UmsMemberService
 import org.springframework.beans.factory.annotation.Autowired
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*
  */
 @RestController
 @ResponseResult
+@LoginAuth
 @RequestMapping("/sso")
 class UmsMemberController {
     @Autowired

@@ -1,5 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.control
 
+import com.kailaisi.eshopdatalinkservice.config.intercepter.LoginAuth
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
 import com.kailaisi.eshopdatalinkservice.mgb.model.PmsBrand
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @Api(tags = ["PmsBrandController"], description = "商品的品牌管理")
 @RequestMapping("/brand")
+@LoginAuth
 class PmsBrandController {
     @Autowired
     lateinit var mService: PmsBrandService
