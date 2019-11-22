@@ -14,14 +14,23 @@ import org.springframework.stereotype.Component
  */
 @Component
 object LoginTokenHelper {
-    @Value("\${jwt.secret}")
-    private val secret: String? = null
-    @Value("\${jwt.expiration}")
-    private val expiration: Long? = null
+
+    var secret: String? = null
+        @Value("\${jwt.secret}")
+        set(value) {
+            field = value
+        }
+
+    var expiration: Long = -1
+        @Value("\${jwt.expiration}")
+        set(value) {
+            field = value
+        }
 
     private val LOGGER = logger(this)
 
     private val CLAIM_KEY_USERID = "userid"
+
     private val CLAIM_KEY_CREATED = "created"
 
     private val SECRET_KEY = "Ld4Dl5f9OoYTezPK"
@@ -35,32 +44,37 @@ object LoginTokenHelper {
     private val LOGIN_TOKEN_KEY = "LOGIN-TOKEN"
 
     /**
+     * 从token中获取用户的id信息
      * 获取登录的TOKEN的ID（从header中获取token，然后进行jwt解密，获取id信息）
      */
-    val loginTokenId: String?
-        get() {
-            val request = RequestContextHolderUtil.request
-            var token = request.getHeader(LOGIN_TOKEN_COOKIE_NAME)
-            if (!token.isNullOrEmpty()) {
-                try {
-                    val claims = Jwts.parser()
-                            .setSigningKey(secret)
-                            .parseClaimsJws(token)
-                            .body
-                    token = claims[CLAIM_KEY_USERID] as String?
-                } catch (e: Exception) {
+    fun getLoginUserId(): Long? {
+        val token = getToken()
+        var userID:Long?=null
+        if (!token.isNullOrEmpty()) {
+            try {
+                val claims = Jwts.parser()
+                        .setSigningKey(secret)
+                        .parseClaimsJws(token)
+                        .body
+                userID = claims[CLAIM_KEY_USERID] as Long?
+            } catch (e: Exception) {
 
-                }
             }
-            return token
         }
+        return userID
+    }
+
+    fun getToken(): String? {
+        val request = RequestContextHolderUtil.request
+        return request.getHeader(LOGIN_TOKEN_COOKIE_NAME)
+    }
 
     /**
      * 获取登录用户信息从请求对象 备注：使用该方法时需要在对应controller类或方法上加[LoginAuth]}注解
      */
     val loginUserFromRequest: LoginUser?
         get() {
-            val loginToken = loginTokenFromRequest ?: return null
+            val loginToken = getLotinTokenFromRequest() ?: return null
             return loginToken.loginUser
         }
 
@@ -69,11 +83,11 @@ object LoginTokenHelper {
      */
     fun generateToken(loginAccount: LoginToken): String {
         var map = mutableMapOf<String, Any>()
-        map[CLAIM_KEY_USERID] = loginAccount.loginUser!!.username
+        map[CLAIM_KEY_USERID] = loginAccount.loginUser!!.id
         map[CLAIM_KEY_CREATED] = loginAccount.createTime
         return Jwts.builder()
                 .setClaims(map)
-                .signWith(SignatureAlgorithm.ES512, secret)
+                .signWith(SignatureAlgorithm.HS512, secret)
                 .compact()
     }
 
@@ -104,10 +118,9 @@ object LoginTokenHelper {
     /**
      * 获取登录TOKEN信息从请求对象 备注：使用该方法时需要在对应controller类或方法上加[LoginAuth]}注解
      */
-    val loginTokenFromRequest: LoginToken?
-        get() {
-            val loginTokenO = RequestContextHolderUtil.request.getAttribute(LOGIN_TOKEN_KEY) ?: return null
-            return loginTokenO as LoginToken
-        }
+    fun getLotinTokenFromRequest(): LoginToken? {
+        val loginTokenO = RequestContextHolderUtil.request.getAttribute(LOGIN_TOKEN_KEY) ?: return null
+        return loginTokenO as LoginToken
+    }
 
 }

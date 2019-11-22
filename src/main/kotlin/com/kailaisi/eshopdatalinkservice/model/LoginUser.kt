@@ -11,11 +11,11 @@ import java.util.*
  */
 class LoginUser : Model {
     @ApiModelProperty("用户ID")
-    private var id: Long? = null
+    var id: Long = 0
     @ApiModelProperty("登陆账号")
     lateinit var username: String
     @ApiModelProperty("")
-    var password: String? = null
+    lateinit var password: String
     @ApiModelProperty("头像")
     var icon: String? = null
     @ApiModelProperty("邮箱")

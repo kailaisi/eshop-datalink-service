@@ -8,6 +8,7 @@ import com.kailaisi.eshopdatalinkservice.model.HeaderConstants
 import com.kailaisi.eshopdatalinkservice.model.LoginQO
 import com.kailaisi.eshopdatalinkservice.model.LoginToken
 import com.kailaisi.eshopdatalinkservice.model.LoginUser
+import com.kailaisi.eshopdatalinkservice.model.enums.CacheKeyEnum
 import com.kailaisi.eshopdatalinkservice.model.qo.UmsAdminRegisterQO
 import com.kailaisi.eshopdatalinkservice.service.LoginTokenService
 import com.kailaisi.eshopdatalinkservice.service.UmsAdminService
@@ -55,7 +56,7 @@ class UmsAdminServiceImpl : MySqlCrudServiceImpl<UmsAdmin, Long>(), UmsAdminServ
             throw BusinessException(ResultCode.USER_LOGIN_ERROR)
         }
         val umsAdmin = list[0]
-        if (umsAdmin.password != passwordEncoder.encode(loginQO.pwd)) {
+        if (!passwordEncoder.matches(loginQO.pwd, umsAdmin.password)) {
             throw BusinessException(ResultCode.USER_LOGIN_ERROR)
         }
         val request = RequestContextHolderUtil.request
@@ -67,13 +68,16 @@ class UmsAdminServiceImpl : MySqlCrudServiceImpl<UmsAdmin, Long>(), UmsAdminServ
             platform = request.getHeader(HeaderConstants.CALL_SOURCE)
             loginUser = user
         }
-        var token = LoginTokenHelper.generateToken(tokenInfo)
-        loginTokenService.add(tokenInfo)
-        return token
+        tokenInfo = loginTokenService.add(tokenInfo)
+        LoginTokenHelper.addLoginTokenIdToCookie(tokenInfo.id, CacheKeyEnum.VALUE_LOGIN_TOKENS.sec)
+        return tokenInfo.id
     }
 
     override fun logout() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val loginToken: LoginToken = LoginTokenHelper.getLotinTokenFromRequest()
+                ?: throw BusinessException(ResultCode.USER_NOT_LOGGED_IN)
+        loginTokenService.deleteById(loginToken.id)
+        LoginTokenHelper.delLoginTokenIdFromCookie()
     }
 
 

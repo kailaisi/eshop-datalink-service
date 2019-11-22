@@ -1,5 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.model
 
+import com.kailaisi.eshopdatalinkservice.mgb.Model
 import java.util.*
 
 /**
@@ -7,9 +8,9 @@ import java.util.*
  *<p/>作者：
  *<br/>创建时间：
  */
-class LoginToken {
+class LoginToken:Model {
 
-    var id: String? = null
+    lateinit var id: String
 
     var ttl: Long? = null
 

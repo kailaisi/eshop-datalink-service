@@ -23,21 +23,22 @@ class LoginedAuthInterceptor : HandlerInterceptor {
 
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
         if (handler is HandlerMethod) {
-            var beanType = handler.beanType
-            var method = handler.method
+            val beanType = handler.beanType
+            val method = handler.method
             if (beanType.isAnnotationPresent(LoginAuth::class.java) || method.isAnnotationPresent(LoginAuth::class.java)) {
-                var loginUser = LoginTokenHelper.loginUserFromRequest
+                val loginUser = LoginTokenHelper.loginUserFromRequest
                 if (loginUser != null) {
                     return true
                 }
-                val userId = LoginTokenHelper.loginTokenId
-                if (userId.isNullOrEmpty()) {
+                var token = LoginTokenHelper.getToken()
+                if (token==null) {
                     throw BusinessException(ResultCode.USER_NOT_LOGGED_IN)
                 }
-                val loginToken = loginTokenService.getById(userId!!)
+                val loginToken = loginTokenService.getById(token)
                 if (loginToken == null) {
                     throw BusinessException(ResultCode.USER_NOT_LOGGED_IN)
                 }
+                loginTokenService.expire(token)
                 LoginTokenHelper.addLoginTokenToRequest(loginToken)
                 return true
             }

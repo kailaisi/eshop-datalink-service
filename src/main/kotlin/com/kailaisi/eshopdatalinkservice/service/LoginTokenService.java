@@ -3,47 +3,48 @@ package com.kailaisi.eshopdatalinkservice.service;
 import com.kailaisi.eshopdatalinkservice.model.LoginToken;
 
 /**
- * @desc 用户登录TOKEN服务
- *
  * @author zhumaer
+ * @desc 用户登录TOKEN服务
  * @since 6/20/2017 3:00 PM
  */
 public interface LoginTokenService {
 
-	/**
-	 *
-	 * Add login token.
-	 *
-	 * @param loginToken the login token
-	 * @return the login token
-	 */
-	LoginToken add(LoginToken loginToken);
+    /**
+     * Add login token.
+     *
+     * @param loginToken the login token
+     * @return the login token
+     */
+    LoginToken add(LoginToken loginToken);
 
-	/**
-	 *
-	 * Delete by id.
-	 *
-	 * @param id the id
-	 */
-	void deleteById(String id);
+    /**
+     * Delete by id.
+     *
+     * @param id the id
+     */
+    void deleteById(String id);
 
-	/**
-	 *
-	 * Get by id login token.
-	 *
-	 * @param id the id
-	 * @return the login token
-	 */
+    /**
+     * Get by id login token.
+     *
+     * @param id the id
+     * @return the login token
+     */
 
-	LoginToken getById(String id);
+    LoginToken getById(String id);
 
-	/**
-	 *
-	 * Ttl long.
-	 *
-	 * @param id the id
-	 * @return the long
-	 */
-	long ttl(String id);
+    /**
+     * Ttl long.
+     *
+     * @param id the id
+     * @return the long
+     */
+    long ttl(String id);
 
+    /**
+     * token延期
+     *
+     * @param token
+     */
+    void expire(String token);
 }
