@@ -1,13 +1,11 @@
-package com.kailaisi.eshopdatalinkservice.config.intercepter.result
+package com.kailaisi.eshopdatalinkservice.config.intercepter
 
-import com.kailaisi.eshopdatalinkservice.config.intercepter.HeaderParamsCheckInterceptor
 import com.kailaisi.eshopdatalinkservice.config.resolver.LoginUserArgumentResolver
-import com.kailaisi.eshopdatalinkservice.config.intercepter.LoginedAuthInterceptor
-import com.kailaisi.eshopdatalinkservice.config.intercepter.ResultResponseInterceptor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 /**
@@ -36,6 +34,15 @@ class InterceptorConfig : WebMvcConfigurer {
         registry.addInterceptor(loginedAuthInterceptor).addPathPatterns(apiUri)
         //相应结果拦截处理
         registry.addInterceptor(resultResponseInterceptor).addPathPatterns(apiUri)
+    }
+
+    override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
+        super.addResourceHandlers(registry)
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+        // 解决swagger无法访问
+        registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        // 解决swagger的js文件无法访问
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
     /**

@@ -3,7 +3,6 @@ package com.kailaisi.eshopdatalinkservice.config.intercepter
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResultCode
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
 import com.kailaisi.eshopdatalinkservice.service.LoginTokenService
-import com.kailaisi.eshopdatalinkservice.service.RedisService
 import com.kailaisi.eshopdatalinkservice.util.LoginTokenHelper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
@@ -19,8 +18,6 @@ import javax.servlet.http.HttpServletResponse
  */
 @Component
 class LoginedAuthInterceptor : HandlerInterceptor {
-    @Autowired
-    lateinit var redisService: RedisService
     @Autowired
     lateinit var loginTokenService: LoginTokenService
 
