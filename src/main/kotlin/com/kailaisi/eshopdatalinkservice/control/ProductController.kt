@@ -19,6 +19,7 @@ import redis.clients.jedis.JedisPool
 @RestController
 @LoginAuth
 class ProductController {
+    @Autowired
     lateinit var productService: EshopProductService
     @Autowired
     lateinit var cacheService: CacheService

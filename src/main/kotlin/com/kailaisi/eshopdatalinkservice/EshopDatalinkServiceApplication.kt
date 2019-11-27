@@ -14,7 +14,7 @@ import tk.mybatis.spring.annotation.MapperScan
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients
-@MapperScan(basePackages = ["com.kailaisi.eshopdatalinkservice.mgb.mapper"])
+@MapperScan(basePackages = ["com.kailaisi.eshopdatalinkservice.mgb.mapper","com.kailaisi.eshopdatalinkservice.search"])
 class EshopDatalinkServiceApplication {
     @Bean
     fun jedis(): JedisPool {
@@ -33,5 +33,12 @@ class EshopDatalinkServiceApplication {
 
 
 fun main(args: Array<String>) {
+    //        System.out.println("===========================================");
+    /**
+     * Springboot整合Elasticsearch 在项目启动前设置一下的属性，防止报错
+     * 解决netty冲突后初始化client时还会抛出异常
+     * java.lang.IllegalStateException: availableProcessors is already set to [4], rejecting [4]
+     */
+    System.setProperty("es.set.netty.runtime.available.processors", "false");
     runApplication<EshopDatalinkServiceApplication>(*args)
 }

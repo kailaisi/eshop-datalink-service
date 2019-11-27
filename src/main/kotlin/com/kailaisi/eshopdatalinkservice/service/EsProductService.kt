@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.search
+package com.kailaisi.eshopdatalinkservice.service
 
 import com.kailaisi.eshopdatalinkservice.search.domain.EsProduct
 import com.kailaisi.eshopdatalinkservice.search.domain.EsProductRelatedInfo

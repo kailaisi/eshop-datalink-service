@@ -4,6 +4,7 @@ import com.kailaisi.eshopdatalinkservice.model.LoginToken
 import com.kailaisi.eshopdatalinkservice.model.enums.CacheKeyEnum
 import com.kailaisi.eshopdatalinkservice.service.LoginTokenService
 import com.kailaisi.eshopdatalinkservice.util.LoginTokenHelper
+import com.kailaisi.eshopdatalinkservice.util.logger
 import lombok.extern.slf4j.Slf4j
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.core.ValueOperations
@@ -12,11 +13,14 @@ import java.util.concurrent.TimeUnit
 
 @Slf4j
 class LoginTokenCacheServiceImpl(loginTokenTemplate: RedisTemplate<String, LoginToken>, loginTokenCacheKeyPrefix: String) : LoginTokenService {
+    val log= logger(this)
     private val loginTokenValueOps: ValueOperations<String, LoginToken>
     private val loginTokenTemplate: RedisTemplate<String, LoginToken>
     private val loginTokenCacheKeyPrefix: String
     private fun getLoginTokenCacheKey(token: String): String {
-        return loginTokenCacheKeyPrefix + token
+        val key = loginTokenCacheKeyPrefix + token
+        log.info(key)
+        return key
     }
 
     override fun add(loginToken: LoginToken): LoginToken {
@@ -33,9 +37,9 @@ class LoginTokenCacheServiceImpl(loginTokenTemplate: RedisTemplate<String, Login
         loginTokenTemplate.delete(getLoginTokenCacheKey(id))
     }
 
-    override fun getById(id: String): LoginToken {
+    override fun getById(id: String): LoginToken? {
         Assert.notNull(id, "id is not null")
-        return loginTokenValueOps[getLoginTokenCacheKey(id)]!!
+        return loginTokenValueOps[getLoginTokenCacheKey(id)]
     }
 
     override fun ttl(id: String): Long {

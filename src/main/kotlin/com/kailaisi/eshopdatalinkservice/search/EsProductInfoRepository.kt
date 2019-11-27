@@ -10,7 +10,7 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
  *<p/>作者：wu
  *<br/>创建时间：2019/11/26 10:36
  */
-interface EsProductRepository :ElasticsearchRepository<EsProduct,Long>{
+interface EsProductInfoRepository :ElasticsearchRepository<EsProduct,Long>{
     /**
      * 搜索查询
      *
@@ -20,5 +20,5 @@ interface EsProductRepository :ElasticsearchRepository<EsProduct,Long>{
      * @param page              分页信息
      * @return
      */
-    fun findByNameOrSubTitleOrKeywords(name: String?, subTitle: String?, keywords: String?, page: Pageable?): Page<EsProduct>?
+    fun findByNameOrSubTitleOrKeywords(name: String, subTitle: String, keywords: String, page: Pageable): Page<EsProduct>?
 }

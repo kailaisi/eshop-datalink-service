@@ -6,6 +6,6 @@ package com.kailaisi.eshopdatalinkservice.model.enums
  *<br/>创建时间：2019/11/21 17:27
  */
 enum class CacheKeyEnum(var code: String, var sec: Int) {
-    VALUE_LOGIN_TOKENS("zhuma:login_tokens:", TimeEnum.ONE_MINUTES.sec),
-    VALUE_USERS("zhuma:user:profile:%s", TimeEnum.ONE_WEEK.sec);
+    VALUE_LOGIN_TOKENS("login_tokens:", TimeEnum.ONE_HOUR.sec),
+    VALUE_USERS("user:profile:%s", TimeEnum.ONE_WEEK.sec);
 }

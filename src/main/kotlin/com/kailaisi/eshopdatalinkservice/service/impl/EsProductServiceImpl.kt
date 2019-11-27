@@ -1,5 +1,8 @@
-package com.kailaisi.eshopdatalinkservice.search
+package com.kailaisi.eshopdatalinkservice.service.impl
 
+import com.kailaisi.eshopdatalinkservice.search.EsProductDao
+import com.kailaisi.eshopdatalinkservice.search.EsProductInfoRepository
+import com.kailaisi.eshopdatalinkservice.service.EsProductService
 import com.kailaisi.eshopdatalinkservice.search.domain.EsProduct
 import com.kailaisi.eshopdatalinkservice.search.domain.EsProductRelatedInfo
 import com.kailaisi.eshopdatalinkservice.search.domain.ProductAttr
@@ -44,7 +47,7 @@ class EsProductServiceImpl : EsProductService {
     @Autowired
     lateinit var productDao: EsProductDao
     @Autowired
-    lateinit var esProductRepository: EsProductRepository
+    lateinit var esProductRepository: EsProductInfoRepository
     @Autowired
     lateinit var elasticsearchTemplate: ElasticsearchTemplate
 
