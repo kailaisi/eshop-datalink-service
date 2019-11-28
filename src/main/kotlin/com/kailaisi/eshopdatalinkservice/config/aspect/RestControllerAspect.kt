@@ -2,8 +2,8 @@ package com.kailaisi.eshopdatalinkservice.config.aspect
 
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
-import com.kailaisi.eshopdatalinkservice.model.HeaderConstants
 import com.kailaisi.eshopdatalinkservice.config.handler.GlobalExceptionHandler
+import com.kailaisi.eshopdatalinkservice.model.HeaderConstants
 import com.kailaisi.eshopdatalinkservice.util.IPUtils
 import com.kailaisi.eshopdatalinkservice.util.LoginTokenHelper
 import com.kailaisi.eshopdatalinkservice.util.RequestContextHolderUtil
@@ -14,7 +14,6 @@ import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.reflect.MethodSignature
 import org.springframework.stereotype.Component
-import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.multipart.MultipartFile
 import java.lang.reflect.Method
 import javax.servlet.http.HttpServletRequest
@@ -58,8 +57,7 @@ class RestControllerAspect {
      * 判断是否需要进行日志的打印
      */
     private fun needToLog(method: Method): Boolean {
-        return method.getAnnotation(GetMapping::class.java) == null
-                && method.declaringClass != GlobalExceptionHandler::class.java
+        return method.declaringClass != GlobalExceptionHandler::class.java
     }
 
     /**
@@ -85,7 +83,6 @@ class RestControllerAspect {
         var jsonObject = JSONObject()
         var b = it is Exception
         var b1 = it == null
-        log.info("$it   $b     $b1")
         if (b1 || b) {
           return  jsonObject.toJSONString()
         }
