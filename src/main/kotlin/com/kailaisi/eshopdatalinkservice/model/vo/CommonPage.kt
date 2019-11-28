@@ -4,6 +4,7 @@ import com.github.pagehelper.Page
 import com.github.pagehelper.PageInfo
 import com.kailaisi.eshopdatalinkservice.mgb.Model
 import com.kailaisi.eshopdatalinkservice.model.qo.PageQO
+import com.kailaisi.eshopdatalinkservice.search.domain.EsProduct
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 import org.springframework.beans.BeanUtils
@@ -91,6 +92,18 @@ class CommonPage<T>():Model {
             } else {
                 return ceil(total.toDouble().div(pageSize)) as Int
             }
+        }
+
+        fun<T> reset(pageInfo: org.springframework.data.domain.Page<T>): CommonPage<T> {
+            val result: CommonPage<T> = CommonPage()
+            result.apply {
+                totalPage=pageInfo.totalPages
+                pageNum=pageInfo.number
+                pageSize=pageInfo.size
+                total=pageInfo.totalElements
+                list=pageInfo.content
+            }
+            return result
         }
     }
 }

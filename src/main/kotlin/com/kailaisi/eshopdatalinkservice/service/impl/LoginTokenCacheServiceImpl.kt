@@ -19,7 +19,6 @@ class LoginTokenCacheServiceImpl(loginTokenTemplate: RedisTemplate<String, Login
     private val loginTokenCacheKeyPrefix: String
     private fun getLoginTokenCacheKey(token: String): String {
         val key = loginTokenCacheKeyPrefix + token
-        log.info(key)
         return key
     }
 
@@ -49,7 +48,7 @@ class LoginTokenCacheServiceImpl(loginTokenTemplate: RedisTemplate<String, Login
 
     override fun expire(token: String?) {
         Assert.notNull(token, "token is not null")
-        loginTokenTemplate.expire(token!!,CacheKeyEnum.VALUE_LOGIN_TOKENS.sec.toLong(),TimeUnit.SECONDS)
+        loginTokenTemplate.expire(getLoginTokenCacheKey(token!!),CacheKeyEnum.VALUE_LOGIN_TOKENS.sec.toLong(),TimeUnit.SECONDS)
     }
 
     init {

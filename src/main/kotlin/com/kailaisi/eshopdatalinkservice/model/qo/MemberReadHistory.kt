@@ -15,7 +15,7 @@ class MemberReadHistory {
     @Id
     var id: String? = null
     @Indexed
-    var memberId: Long? = null
+    var memberId: Long=0
     var memberNickname: String? = null
     var memberIcon: String? = null
     @Indexed
@@ -25,5 +25,4 @@ class MemberReadHistory {
     var productSubTitle: String? = null
     var productPrice: String? = null
     var createTime: Date? = null
-
 }
