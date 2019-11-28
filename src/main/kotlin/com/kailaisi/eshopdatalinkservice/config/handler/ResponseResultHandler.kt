@@ -1,9 +1,9 @@
 package com.kailaisi.eshopdatalinkservice.config.handler
 
-import com.kailaisi.eshopdatalinkservice.config.intercepter.result.PlatformResult
-import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
 import com.kailaisi.eshopdatalinkservice.config.intercepter.ResultResponseInterceptor
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.DefaultErrorResult
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.PlatformResult
+import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
 import com.kailaisi.eshopdatalinkservice.util.FastJsonUtil
 import com.kailaisi.eshopdatalinkservice.util.RequestContextHolderUtil
 import org.springframework.core.MethodParameter
@@ -43,7 +43,7 @@ class ResponseResultHandler : ResponseBodyAdvice<Any> {
                 // 而在StringMessageConverter类型，他只接受String类型的返回类型，我们在ResponseBodyAdvice中将返回值从String类型改成ResponseResult类型之后，
                 // 调用StringMessageConverter方法发生类型强转。ReponseResult无法转换成String，发生类型转换异常。
                 // 因为handler处理类的返回类型是String，为了保证一致性，这里需要将ResponseResult转回去
-                is String -> FastJsonUtil.bean2Json(PlatformResult.success(body))
+                is String?-> FastJsonUtil.bean2Json(PlatformResult.success(body))
                 else -> PlatformResult.success(body)
             }
         }
