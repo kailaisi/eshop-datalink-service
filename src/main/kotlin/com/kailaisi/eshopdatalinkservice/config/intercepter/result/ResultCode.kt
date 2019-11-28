@@ -9,8 +9,7 @@ import java.io.Serializable
  */
 enum class ResultCode(val code: Int, val msg: String) {
     /* 成功状态码 */
-    SUCCESS(1, "成功"),
-
+    SUCCESS(1, "操作成功"),
     /* 参数错误：10001-19999 */
     PARAM_IS_INVALID(10001, "参数无效"),
     PARAM_IS_BLANK(10002, "参数为空"),

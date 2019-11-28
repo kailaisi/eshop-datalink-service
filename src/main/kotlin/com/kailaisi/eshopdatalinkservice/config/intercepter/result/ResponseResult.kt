@@ -1,7 +1,5 @@
 package com.kailaisi.eshopdatalinkservice.config.intercepter.result
 
-import com.kailaisi.eshopdatalinkservice.config.intercepter.result.PlatformResult
-import com.kailaisi.eshopdatalinkservice.config.intercepter.result.Result
 import kotlin.reflect.KClass
 
 /**
@@ -9,9 +7,9 @@ import kotlin.reflect.KClass
  *<p/>作者：wu
  *<br/>创建时间：2019/11/5 11:09
  */
-@Target(AnnotationTarget.FUNCTION,AnnotationTarget.CLASS)
+@Target(AnnotationTarget.FUNCTION, AnnotationTarget.CLASS)
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented
-annotation class ResponseResult(val value:KClass<out Result> = PlatformResult::class)
+annotation class ResponseResult(val value: KClass<out Result> = PlatformResult::class)
 
 
