@@ -8,7 +8,7 @@ services:
     container_name: mysql
     # 指定服务运行的端口
     ports:
-      - 3306:3307
+      - 3307:3306
     # 指定容器中需要挂载的文件
     volumes:
       - /mydata/mysql/log:/var/log/mysql
@@ -20,7 +20,7 @@ services:
   # 指定服务名称
   mall-tiny-docker-compose:
     # 指定服务使用的镜像
-    image: mall-tiny/eshop-datalink-service-0.0.1-SNAPSHOT
+    image: eshop-datalink-service
     # 指定容器名称
     container_name: eshop-datalink-service
     # 指定服务运行的端口
