@@ -4,9 +4,7 @@ import com.kailaisi.eshopdatalinkservice.config.resolver.LoginUserArgumentResolv
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
+import org.springframework.web.servlet.config.annotation.*
 
 /**
  *描述：配置拦截器
@@ -29,20 +27,21 @@ class InterceptorConfig : WebMvcConfigurer {
      */
     override fun addInterceptors(registry: InterceptorRegistry) {
         val apiUri = "/**"
-        registry.addInterceptor(headerParamsCheckInterceptor).addPathPatterns(apiUri)
+
+        registry.addInterceptor(headerParamsCheckInterceptor).addPathPatterns(apiUri).excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
         //登录校验拦截处理
-        registry.addInterceptor(loginedAuthInterceptor).addPathPatterns(apiUri)
+        registry.addInterceptor(loginedAuthInterceptor).addPathPatterns(apiUri).excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
         //相应结果拦截处理
-        registry.addInterceptor(resultResponseInterceptor).addPathPatterns(apiUri)
+        registry.addInterceptor(resultResponseInterceptor).addPathPatterns(apiUri).excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
     }
 
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         super.addResourceHandlers(registry)
-        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/")
         // 解决swagger无法访问
-        registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/")
         // 解决swagger的js文件无法访问
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/")
     }
 
     /**
