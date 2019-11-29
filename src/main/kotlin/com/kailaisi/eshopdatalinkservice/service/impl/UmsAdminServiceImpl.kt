@@ -74,7 +74,7 @@ class UmsAdminServiceImpl : MySqlCrudServiceImpl<UmsAdmin, Long>(), UmsAdminServ
     }
 
     override fun logout() {
-        val loginToken: LoginToken = LoginTokenHelper.getLotinTokenFromRequest()
+        val loginToken: LoginToken = LoginTokenHelper.getLoginTokenFromRequest()
                 ?: throw BusinessException(ResultCode.USER_NOT_LOGGED_IN)
         loginTokenService.deleteById(loginToken.id)
         LoginTokenHelper.delLoginTokenIdFromCookie()

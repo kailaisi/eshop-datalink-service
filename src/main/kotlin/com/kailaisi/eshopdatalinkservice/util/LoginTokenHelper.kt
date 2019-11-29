@@ -74,7 +74,7 @@ object LoginTokenHelper {
      */
     val loginUserFromRequest: LoginUser?
         get() {
-            val loginToken = getLotinTokenFromRequest() ?: return null
+            val loginToken = getLoginTokenFromRequest() ?: return null
             return loginToken.loginUser
         }
 
@@ -118,7 +118,7 @@ object LoginTokenHelper {
     /**
      * 获取登录TOKEN信息从请求对象 备注：使用该方法时需要在对应controller类或方法上加[LoginAuth]}注解
      */
-    fun getLotinTokenFromRequest(): LoginToken? {
+    fun getLoginTokenFromRequest(): LoginToken? {
         val loginTokenO = RequestContextHolderUtil.request.getAttribute(LOGIN_TOKEN_KEY) ?: return null
         return loginTokenO as LoginToken
     }
