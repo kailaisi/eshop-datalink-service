@@ -11,7 +11,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     platform: mysql
-    url: jdbc:mysql://192.168.1.5:3306/mall?serverTimezone=UTC
+    url: jdbc:mysql://192.168.1.11:3307/mall?serverTimezone=UTC
     username: root
     password: 123456
     druid:
@@ -35,20 +35,13 @@ spring:
         min-idle: 0
     timeout: 3000
   data:
-    mongodb:
-      host: 192.168.1.5 # mongodb的连接地址
-      port: 27017 # mongodb的连接端口号
-      database: mall-port # mongodb的连接的数据库
-    elasticsearch:
-      cluster-name: my-application
-      cluster-nodes: 192.168.1.5:9300
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: rabbitadmin
-    password: 123456
-    publisher-confirms: true
-    virtual-host: /mall
+      mongodb:
+        host: 192.168.1.5 # mongodb的连接地址
+        port: 27017 # mongodb的连接端口号
+        database: mall-port # mongodb的连接的数据库
+      elasticsearch:
+        cluster-name: elasticsearch
+        cluster-nodes: 192.168.1.11:9300
   main:
     allow-bean-definition-overriding: true
 jwt:
