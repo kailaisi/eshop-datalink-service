@@ -78,7 +78,6 @@ class EsProductControl {
         pageNum=pageNum?:0
         pageSize=pageSize?:10
         val esProductPage = esProductService.search(keyword, brandId, productCategoryId, pageNum, pageSize, 1)
-        //return CommonPage.reset(esProductPage)
-        return null
+        return CommonPage.reset(esProductPage)
     }
 }

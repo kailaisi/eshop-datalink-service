@@ -137,12 +137,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
     </appender>
-    <!--输出到logstash的appender-->
-    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <!--可以访问的logstash日志收集端口-->
-        <destination>192.168.1.11:4560</destination>
-        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
-    </appender>
+
     <!--
         <logger>用来设置某一个包或者具体的某一个类的日志打印级别、
         以及指定<appender>。<logger>仅有一个name属性，
@@ -172,9 +167,9 @@
 
     <!-- 4. 最终的策略 -->
     <!-- 4.1 开发环境:打印控制台-->
- <!--   <springProfile name="dev">
-        <logger name="com.kailaisi.eshopdatalinkservice" level="debug"/>&lt;!&ndash; 修改此处扫描包名 &ndash;&gt;
-    </springProfile>-->
+    <springProfile name="dev">
+        <logger name="com.kailaisi.eshopdatalinkservice" level="debug"/><!-- 修改此处扫描包名 -->
+    </springProfile>
 
     <root level="info">
         <appender-ref ref="CONSOLE" />
@@ -182,7 +177,6 @@
         <appender-ref ref="INFO_FILE" />
         <appender-ref ref="WARN_FILE" />
         <appender-ref ref="ERROR_FILE" />
-        <appender-ref ref="LOGSTASH" />
     </root>
 
     <!-- 4.2 生产环境:输出到文档
