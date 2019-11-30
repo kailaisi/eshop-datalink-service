@@ -44,6 +44,13 @@ spring:
         cluster-nodes: 192.168.1.5:9300
   main:
     allow-bean-definition-overriding: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: rabbitadmin
+    password: 123456
+    publisher-confirms: true
+    virtual-host: /mall
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
   secret: mySecret #JWT加解密使用的密钥

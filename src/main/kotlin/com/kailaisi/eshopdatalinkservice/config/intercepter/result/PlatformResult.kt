@@ -17,11 +17,22 @@ data class PlatformResult(var data: Any? = null) : Result {
 
     companion object {
         fun success() = PlatformResult().setResultCode(ResultCode.SUCCESS).let { it.result = 1 }
+        fun success(message: String): PlatformResult {
+            return PlatformResult().setResultCode(ResultCode.SUCCESS).apply {
+                result = 1
+                msg = message
+            }
+        }
+
         fun success(data: Any?): PlatformResult {
-            var result = PlatformResult().setResultCode(ResultCode.SUCCESS)
+            val result = PlatformResult().setResultCode(ResultCode.SUCCESS)
             result.data = data
             result.result = 1
             return result
+        }
+
+        fun success(resultCode: ResultCode): PlatformResult {
+            return PlatformResult().setResultCode(resultCode)
         }
 
         fun failure(resultCode: ResultCode): PlatformResult {
