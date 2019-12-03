@@ -47,6 +47,7 @@ class UmsAdminServiceImpl : MySqlCrudServiceImpl<UmsAdmin, Long>(), UmsAdminServ
         }
         val umsAdmin = UmsAdmin()
         BeanUtils.copyProperties(umsAdminQO, umsAdmin)
+        umsAdmin.password = passwordEncoder.encode(umsAdminQO.password)
         mapper.insert(umsAdmin)
     }
 
