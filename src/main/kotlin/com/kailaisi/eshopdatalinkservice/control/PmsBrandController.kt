@@ -69,4 +69,15 @@ class PmsBrandController {
     fun getList(@RequestBody pageQO: PageQO<*>): CommonPage<PmsBrand> {
         return mService.selectPage(pageQO)
     }
+
+    @ApiOperation("获取指定Id的品牌信息")
+    @GetMapping("/get/{id}")
+    fun getItem(@PathVariable id: Long): PmsBrand? {
+        return mService.selectByPk(id)
+    }
+
+    @PostMapping("/delete/batch")
+    fun deleteBatch(@RequestBody ids: List<Long>): Int {
+        return mService.deleteByPks(ids)
+    }
 }
