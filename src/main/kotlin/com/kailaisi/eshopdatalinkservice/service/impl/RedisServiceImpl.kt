@@ -12,6 +12,7 @@ class RedisServiceImpl : RedisService {
     private lateinit var stringRedisTemplate: StringRedisTemplate
 
     override fun set(key: String, value: String) {
+
         stringRedisTemplate.opsForValue().set(key, value)
     }
 
@@ -30,4 +31,5 @@ class RedisServiceImpl : RedisService {
     override fun increment(key: String, delta: Long): Long? {
         return stringRedisTemplate.opsForValue().increment(key, delta)
     }
+
 }

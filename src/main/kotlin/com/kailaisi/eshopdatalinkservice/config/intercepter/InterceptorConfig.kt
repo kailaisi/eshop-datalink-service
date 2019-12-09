@@ -4,7 +4,9 @@ import com.kailaisi.eshopdatalinkservice.config.resolver.LoginUserArgumentResolv
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
-import org.springframework.web.servlet.config.annotation.*
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 /**
  *描述：配置拦截器
@@ -21,13 +23,16 @@ class InterceptorConfig : WebMvcConfigurer {
     lateinit var loginUserArgumentResolver: LoginUserArgumentResolver
     @Autowired
     lateinit var headerParamsCheckInterceptor: HeaderParamsCheckInterceptor
+    @Autowired
+    lateinit var limitInterceptor: LimitInterceptor
 
     /**
      * 拦截器
      */
     override fun addInterceptors(registry: InterceptorRegistry) {
         val apiUri = "/**"
-
+        //基于redis+lua的限流
+        registry.addInterceptor(limitInterceptor).addPathPatterns(apiUri).excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**")
         registry.addInterceptor(headerParamsCheckInterceptor).addPathPatterns(apiUri).excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
         //登录校验拦截处理
         registry.addInterceptor(loginedAuthInterceptor).addPathPatterns(apiUri).excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");

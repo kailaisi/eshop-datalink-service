@@ -54,7 +54,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     @Bean("ratelimitLua")
     public DefaultRedisScript getRedisScript() {
         DefaultRedisScript redisScript = new DefaultRedisScript();
-        redisScript.setLocation(new ClassPathResource("ratelimit.lua"));
+        redisScript.setLocation(new ClassPathResource("lua/ratelimit.lua"));
         redisScript.setResultType(java.lang.Long.class);
         return redisScript;
     }
@@ -62,7 +62,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     @Bean("ratelimitInitLua")
     public DefaultRedisScript getInitRedisScript() {
         DefaultRedisScript redisScript = new DefaultRedisScript();
-        redisScript.setLocation(new ClassPathResource("ratelimitInit.lua"));
+        redisScript.setLocation(new ClassPathResource("lua/ratelimitInit.lua"));
         redisScript.setResultType(java.lang.Long.class);
         return redisScript;
     }
