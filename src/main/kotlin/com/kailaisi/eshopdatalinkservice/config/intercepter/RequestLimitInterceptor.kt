@@ -3,7 +3,6 @@ package com.kailaisi.eshopdatalinkservice.config.intercepter
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
 import com.kailaisi.eshopdatalinkservice.service.RateLimitService
 import com.kailaisi.eshopdatalinkservice.service.RedisService
-import com.kailaisi.eshopdatalinkservice.util.IPUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.data.redis.core.StringRedisTemplate
@@ -28,31 +27,25 @@ class RequestLimitInterceptor : HandlerInterceptor {
 
     @Autowired
     lateinit var stringRedisTemplate: StringRedisTemplate
-
+    /**
+     * redis操作类
+     */
     @Autowired
     lateinit var redisService: RedisService
-
+    /**
+     * 限流sql数据库查询
+     */
     @Autowired
     lateinit var rateLimitService: RateLimitService
-    /**
-     * 当前时间戳
-     */
-    final var currMillSecond: Long? = null
 
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
-        //获取限流信息
-        val ip = IPUtils.getRealIp(request)!!
+        /**
+         * 获取限流信息
+         * 1.从redis获取,如果为-1，则不限流
+         * 2.如果redis没有，则从mysql获取
+         * 3.如果mysql也没有，则配置redis对应的为-1,表示不进行限流
+         */
         val uri = request.requestURI
-        return loadLimit(ip, uri)
-    }
-
-    /**
-     * 获取限流信息
-     * 1.从redis获取,如果为-1，则不限流
-     * 2.如果redis没有，则从mysql获取
-     * 3.如果mysql也没有，则配置redis对应的为-1,表示不进行限流
-     */
-    private fun loadLimit(ip: String, uri: String): Boolean {
         var key = getKey(uri)
         /**
         -- KEYS[1]  string  限流的key
@@ -67,16 +60,16 @@ class RequestLimitInterceptor : HandlerInterceptor {
             if (bean != null) {
                 map["curr_permits"] = bean.limit
                 map["max_burst"] = bean.max
-                map["rate"]=bean.limit
+                map["rate"] = bean.limit
                 map["app"] = "1"
                 redisService.hmset(key, map)
             } else {
-                map["rate"]=0
+                map["rate"] = 0
                 redisService.hmset(key, map)
             }
             redisService.expire(key, 7 * 60 * 60 * 24)
         }
-        val execute =stringRedisTemplate.execute(requestratelimit, Collections.singletonList(key), 1.toString(), currMillSecond.toString())
+        val execute = stringRedisTemplate.execute(requestratelimit, Collections.singletonList(key), 1.toString(), currMillSecond.toString())
         if (execute == 1L || execute == 0L) {
             return true
         } else {
@@ -85,6 +78,6 @@ class RequestLimitInterceptor : HandlerInterceptor {
     }
 
     private fun getKey(uri: String): String {
-        return "ratelimit_${uri}"
+        return "request_limit_${uri}"
     }
 }
