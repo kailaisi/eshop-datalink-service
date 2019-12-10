@@ -2,7 +2,8 @@ package com.kailaisi.eshopdatalinkservice.control
 
 import com.kailaisi.eshopdatalinkservice.ProductPrice
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResponseResult
-import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.ParameterInvalidException
+import com.kailaisi.eshopdatalinkservice.service.RedisService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController
 @ResponseResult
 @RequestMapping("/test")
 class TestController {
+    @Autowired
+    lateinit var redisService: RedisService
+
     @RequestMapping("/testString")
     fun testString(msg: String): String {
         return msg
@@ -26,14 +30,18 @@ class TestController {
     }
 
     @RequestMapping("/testException")
-    fun testException():String {
-        println(1/0)
+    fun testException(): String {
+        println(1 / 0)
         return "测试数据"
     }
 
     @RequestMapping("/testBusinessException")
-    fun testBusinessException():String {
-        throw ParameterInvalidException()
-        return "测试数据"
+    fun testBusinessException(): String {
+        val map = hashMapOf<String, Any>()
+        map["curr_permits"] = 20
+        map["max_burst"] = 40
+        map["app"] = 1
+        redisService.hmset("testInfo", map)
+        return "test"
     }
 }

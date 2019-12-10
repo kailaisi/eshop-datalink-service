@@ -24,7 +24,7 @@ class InterceptorConfig : WebMvcConfigurer {
     @Autowired
     lateinit var headerParamsCheckInterceptor: HeaderParamsCheckInterceptor
     @Autowired
-    lateinit var limitInterceptor: LimitInterceptor
+    lateinit var limitInterceptor: RequestLimitInterceptor
 
     /**
      * 拦截器

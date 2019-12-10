@@ -17,13 +17,13 @@ local LAST_TIME_KEY = KEYS[1] .. "_time";
 local token_cnt = redis.call("get", KEYS[1])
 -- 桶完全恢复需要的最大时长
 local reset_time = math.ceil(bucket_capacity / add_token) * add_interval;
-if (token_cnt == -1) then
+-- 上一次更新桶的时间
+local last_time = redis.call('get', LAST_TIME_KEY)
+if (token_cnt == '-1' or token_cnt==-1) then
     return 1
 else
-    if token_cnt then
+    if token_cnt and (type(last_time) ~='boolean' and last_time ~=nil) then
         -- 令牌桶存在
-        -- 上一次更新桶的时间
-        local last_time = redis.call('get', LAST_TIME_KEY)
         -- 恢复倍数
         local multiple = math.floor((now - last_time) / add_interval)
         -- 恢复令牌数
@@ -39,9 +39,8 @@ else
         redis.call('set', KEYS[1], token_cnt, 'EX', reset_time)
         redis.call('set', LAST_TIME_KEY, last_time + multiple * add_interval, 'EX', reset_time)
         return token_cnt
-
     else
-        -- 令牌桶不存在
+        -- 令牌桶不存在 或者没有上次更新时间
         token_cnt = bucket_capacity - 1
         -- 设置过期时间避免key一直存在
         redis.call('set', KEYS[1], token_cnt, 'EX', reset_time);

@@ -21,10 +21,10 @@ import javax.servlet.http.HttpServletResponse
  *<br/>创建时间：2019/12/9 17:14
  */
 @Component
-class LimitInterceptor : HandlerInterceptor {
-    @Qualifier("getInitRedisScript")
+class RequestLimitInterceptor : HandlerInterceptor {
+    @Qualifier("getRedisScript")
     @Resource
-    lateinit var ratelimitInitLua: RedisScript<Long>
+    lateinit var requestratelimit: RedisScript<Long>
 
     @Autowired
     lateinit var stringRedisTemplate: StringRedisTemplate
@@ -56,29 +56,26 @@ class LimitInterceptor : HandlerInterceptor {
         var key = getKey(uri)
         /**
         -- KEYS[1]  string  限流的key
-
-        -- ARGV[1]  int     桶最大容量
-        -- ARGV[2]  int     每次添加令牌数
-        -- ARGV[3]  int     令牌添加间隔(秒)
-        -- ARGV[4]  int     当前时间戳
+        -- ARGV[1],   请求的令牌数
+        -- "last_mill_second",ARGV[2],   当前时间戳
          */
         var hasLimit = redisService.get(key)
-        var max: Int = -1
-        var limit: Int = -1
         val currMillSecond = stringRedisTemplate.execute { redisConnection -> redisConnection.time() }
         if (hasLimit == null) {
             val bean = rateLimitService.selectByName(uri)
+            val map = hashMapOf<String, Any>()
             if (bean != null) {
-                redisService.set(key, bean.limit.toString())
-                max = bean.max
-                limit = bean.limit
+                map["curr_permits"] = bean.limit
+                map["max_burst"] = bean.max
+                map["rate"]=bean.limit
+                map["app"] = 1
+                redisService.hmset(key, map)
             } else {
-                redisService.set(key, "-1")
+                redisService.hmset(key, map)
             }
             redisService.expire(key, 7 * 60 * 60 * 24)
-            return true
         }
-        val execute = stringRedisTemplate.execute(ratelimitInitLua, Collections.singletonList(key), max.toString(), limit.toString(), 1.toString(), currMillSecond.toString())
+        val execute = stringRedisTemplate.execute(requestratelimit, Collections.singletonList(key), 1.toString(), currMillSecond.toString())
         if (execute == 1L || execute == 0L) {
             return true
         } else {

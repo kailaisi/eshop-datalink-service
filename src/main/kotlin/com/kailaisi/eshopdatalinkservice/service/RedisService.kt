@@ -20,4 +20,12 @@ interface RedisService {
      * 自增操作
      */
     fun increment(key: String, delta: Long): Long?
+
+
+    fun hset(key: String, field: String, value: Any)
+    fun hmset(key: String, hash: HashMap<String, Any>)
+    fun hget(key: String, field: String): Any?
+    fun hmget(key: String): MutableMap<String, Any>
+    fun hdel(key: String, field: String)
+    fun hincr(key: String, field: String)
 }
