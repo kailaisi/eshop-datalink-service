@@ -28,4 +28,5 @@ interface RedisService {
     fun hmget(key: String): MutableMap<String, Any>
     fun hdel(key: String, field: String)
     fun hincr(key: String, field: String)
+    fun exist(key: String): Boolean
 }

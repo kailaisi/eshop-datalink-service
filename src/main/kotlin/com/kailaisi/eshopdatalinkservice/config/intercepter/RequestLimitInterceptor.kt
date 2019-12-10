@@ -59,23 +59,24 @@ class RequestLimitInterceptor : HandlerInterceptor {
         -- ARGV[1],   请求的令牌数
         -- "last_mill_second",ARGV[2],   当前时间戳
          */
-        var hasLimit = redisService.get(key)
+        val hasLimit = redisService.exist(key)
         val currMillSecond = stringRedisTemplate.execute { redisConnection -> redisConnection.time() }
-        if (hasLimit == null) {
+        if (hasLimit) {
             val bean = rateLimitService.selectByName(uri)
             val map = hashMapOf<String, Any>()
             if (bean != null) {
                 map["curr_permits"] = bean.limit
                 map["max_burst"] = bean.max
                 map["rate"]=bean.limit
-                map["app"] = 1
+                map["app"] = "1"
                 redisService.hmset(key, map)
             } else {
+                map["rate"]=0
                 redisService.hmset(key, map)
             }
             redisService.expire(key, 7 * 60 * 60 * 24)
         }
-        val execute = stringRedisTemplate.execute(requestratelimit, Collections.singletonList(key), 1.toString(), currMillSecond.toString())
+        val execute =stringRedisTemplate.execute(requestratelimit, Collections.singletonList(key), 1.toString(), currMillSecond.toString())
         if (execute == 1L || execute == 0L) {
             return true
         } else {

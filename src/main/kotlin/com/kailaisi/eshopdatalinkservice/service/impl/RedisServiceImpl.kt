@@ -57,4 +57,7 @@ class RedisServiceImpl : RedisService {
         redisTemplate.opsForHash<String, Any>().increment(key, field, 1)
     }
 
+    override fun exist(key: String): Boolean {
+      return  redisTemplate.hasKey(key)
+    }
 }
