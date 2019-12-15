@@ -5,8 +5,6 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 spring:
-  application:
-    name: datalink-server
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -48,24 +46,4 @@ spring:
     virtual-host: /mall
   main:
     allow-bean-definition-overriding: true
-jwt:
-  tokenHeader: Authorization #JWT存储的请求头
-  secret: mySecret #JWT加解密使用的密钥
-  expiration: 604800 #JWT的超期限时间(60*60*24)
-  tokenHead: Bearer  #JWT负载中拿到开头
-logging:
-  path: "D:/gongcheng/web/eshop-datalink-service/log/"
-  file: "weblog.log"
-mybatis:
-  mapper-locations:
-    - classpath:mapper/*.xml
-    - classpath*:com/**/mapper/*.xml
-pagehelper:
-  helperDialect: mysql
-  reasonable: true
-  supportMethodsArguments: true
-  params: count=countSql
-mapper:
-  mappers: com.kailaisi.eshopdatalinkservice.config.mapper.CrudMapper
-  mapper.not-empty: false
-  mapper.identity: MYSQL
+
