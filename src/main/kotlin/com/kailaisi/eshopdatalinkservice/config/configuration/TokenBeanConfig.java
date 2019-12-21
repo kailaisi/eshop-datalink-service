@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.config;
+package com.kailaisi.eshopdatalinkservice.config.configuration;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;

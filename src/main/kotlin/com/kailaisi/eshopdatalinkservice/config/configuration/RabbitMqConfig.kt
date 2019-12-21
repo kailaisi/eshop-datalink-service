@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.config
+package com.kailaisi.eshopdatalinkservice.config.configuration
 
 import com.kailaisi.eshopdatalinkservice.model.enums.QueueEnum
 import org.springframework.amqp.core.*

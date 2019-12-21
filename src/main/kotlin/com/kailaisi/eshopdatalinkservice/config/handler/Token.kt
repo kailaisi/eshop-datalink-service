@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.config
+package com.kailaisi.eshopdatalinkservice.config.handler
 
 enum class Token {
     SUCCESS, FAILED;

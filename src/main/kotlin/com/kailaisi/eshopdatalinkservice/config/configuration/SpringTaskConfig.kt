@@ -1,4 +1,4 @@
-package com.kailaisi.eshopdatalinkservice.config
+package com.kailaisi.eshopdatalinkservice.config.configuration
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.scheduling.annotation.EnableScheduling
