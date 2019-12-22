@@ -60,4 +60,12 @@ class RedisServiceImpl : RedisService {
     override fun exist(key: String): Boolean {
       return  redisTemplate.hasKey(key)
     }
+
+    override fun setBit(key: String, offset: Long, flag: Boolean) {
+        redisTemplate.opsForValue().setBit(key,offset,flag)
+    }
+
+    override fun getBit(key: String, offset: Long): Boolean {
+        return redisTemplate.opsForValue().getBit(key,offset)!!
+    }
 }

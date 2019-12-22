@@ -29,4 +29,9 @@ interface RedisService {
     fun hdel(key: String, field: String)
     fun hincr(key: String, field: String)
     fun exist(key: String): Boolean
+    /**
+     * 设置bitmap，布隆过滤器使用
+     */
+    fun setBit(key:String,offset:Long,flag:Boolean)
+    fun getBit(key: String,offset: Long): Boolean
 }

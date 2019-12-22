@@ -24,7 +24,6 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 @Intercepts({
         @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}),
-        @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class}),
         @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class})
 })
 @Component
@@ -40,7 +39,7 @@ public class DynamicDataSourceInterceptor implements Interceptor {
     public Object intercept(Invocation invocation) throws Throwable {
         // 判断当前是否被事务管理
         boolean synchronizationActive = TransactionSynchronizationManager.isActualTransactionActive();
-        String lookupKey = DynamicDataSourceHolder.INSTANCE.getDB_MASTER();
+        String lookupKey;
         if (!synchronizationActive) {
             //如果是非事务的，则再判断是读或者写。
             // 获取SQL中的参数

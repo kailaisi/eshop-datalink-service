@@ -1,5 +1,6 @@
 package com.kailaisi.eshopdatalinkservice.service.impl
 
+import com.kailaisi.eshopdatalinkservice.config.intercepter.BoomFilter
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.ResultCode
 import com.kailaisi.eshopdatalinkservice.config.intercepter.result.exception.BusinessException
 import com.kailaisi.eshopdatalinkservice.mgb.mapper.UmsAdminMapper
@@ -35,6 +36,8 @@ class UmsAdminServiceImpl : MySqlCrudServiceImpl<UmsAdmin, Long>(), UmsAdminServ
     lateinit var passwordEncoder: PasswordEncoder
     @Autowired
     lateinit var loginTokenService: LoginTokenService
+    @Autowired
+    lateinit var boomFilter: BoomFilter
 
     override fun getAdminByUserName(it: String): List<UmsAdmin>? {
         return mapper.getAdminByUserName(it)
@@ -52,6 +55,9 @@ class UmsAdminServiceImpl : MySqlCrudServiceImpl<UmsAdmin, Long>(), UmsAdminServ
     }
 
     override fun login(loginQO: LoginQO): String {
+        if(!boomFilter.contains(loginQO.username)){
+            throw BusinessException(ResultCode.USER_LOGIN_ERROR)
+        }
         val list = mapper.getAdminByUserName(loginQO.username)
         if (list.size == 0) {
             throw BusinessException(ResultCode.USER_LOGIN_ERROR)
