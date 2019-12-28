@@ -14,7 +14,7 @@ import tk.mybatis.spring.annotation.MapperScan
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients
-@MapperScan(basePackages = ["com.kailaisi.eshopdatalinkservice.mgb.mapper","com.kailaisi.eshopdatalinkservice.search"])
+@MapperScan(basePackages = ["com.kailaisi.eshopdatalinkservice.mgb.mapper", "com.kailaisi.eshopdatalinkservice.search"])
 class EshopDatalinkServiceApplication {
     @Bean
     fun jedis(): JedisPool {
@@ -25,6 +25,7 @@ class EshopDatalinkServiceApplication {
         config.testOnBorrow = true
         return JedisPool(config, "127.0.0.1", 6379)
     }
+
     @Bean
     fun passwordEncoder(): PasswordEncoder {
         return BCryptPasswordEncoder()

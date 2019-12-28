@@ -49,6 +49,7 @@ class InterceptorConfig : WebMvcConfigurer {
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/")
     }
 
+
     /**
      * 参数自动注入
      */

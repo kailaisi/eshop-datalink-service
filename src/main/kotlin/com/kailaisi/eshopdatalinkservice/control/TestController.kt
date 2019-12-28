@@ -14,17 +14,16 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @ResponseResult
-@RequestMapping("/test")
+@RequestMapping
 class TestController {
     @Autowired
     lateinit var redisService: RedisService
 
-    @RequestMapping("/testString")
     fun testString(msg: String): String {
         return msg
     }
 
-    @RequestMapping("/testBean")
+    @RequestMapping()
     fun testBean(): ProductPrice {
         return ProductPrice()
     }

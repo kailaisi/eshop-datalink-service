@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  redis-cluster1:
+    image: publicisworldwide/redis-cluster
+    network_mode: host
+    restart: always
+    volumes:
+      - /data/redis/8001/data:/data
+    environment:
+      - REDIS_PORT=8001
+    ports:
+      - '8001:8001'       #服务端口
+      - '18001:18001'   #集群端口
+  redis-cluster2:
+    image: publicisworldwide/redis-cluster
+    network_mode: host
+    restart: always
+    volumes:
+      - /data/redis/8002/data:/data
+    environment:
+      - REDIS_PORT=8002
+
+  redis-cluster3:
+    image: publicisworldwide/redis-cluster
+    network_mode: host
+    restart: always
+    volumes:
+      - /data/redis/8003/data:/data
+    environment:
+      - REDIS_PORT=8003

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*
 @LoginAuth
 @ResponseResult
 @RequestMapping("/esProduct")
-class EsProductControl {
+class EsProductController {
     @Autowired
     lateinit var esProductService: EsProductService
 
