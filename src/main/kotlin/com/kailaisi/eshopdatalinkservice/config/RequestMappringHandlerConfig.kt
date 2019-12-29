@@ -20,7 +20,6 @@ import java.lang.reflect.Method
  *<p/>作者：wu
  *<br/>创建时间：2019/12/27 23:14
  */
-@Configuration
 class RequestMappingHandlerConfig : WebMvcRegistrations {
     override fun getRequestMappingHandlerMapping(): RequestMappingHandlerMapping {
         return ControllerRequestMapping()

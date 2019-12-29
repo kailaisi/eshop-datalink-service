@@ -59,6 +59,14 @@ public class RedisConfig extends CachingConfigurerSupport {
         redisScript.setResultType(java.lang.Long.class);
         return redisScript;
     }
+
+    @Bean("gethongbaoInitLua")
+    public DefaultRedisScript getHongBaoScript() {
+        DefaultRedisScript redisScript = new DefaultRedisScript();
+        redisScript.setLocation(new ClassPathResource("lua/gethongbao.lua"));
+        redisScript.setResultType(java.lang.Long.class);
+        return redisScript;
+    }
 }
 
 

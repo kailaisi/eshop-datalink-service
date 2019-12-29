@@ -68,4 +68,12 @@ class RedisServiceImpl : RedisService {
     override fun getBit(key: String, offset: Long): Boolean {
         return redisTemplate.opsForValue().getBit(key,offset)!!
     }
+
+    override fun lpush(key: String, value: Array<Any>) {
+        redisTemplate.opsForList().leftPushAll(key,*value)
+    }
+
+    override fun lpop(key: String): Any? {
+       return redisTemplate.opsForList().rightPop(key)
+    }
 }

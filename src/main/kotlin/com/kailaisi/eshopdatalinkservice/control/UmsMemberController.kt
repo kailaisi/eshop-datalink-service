@@ -22,7 +22,7 @@ class UmsMemberController {
         return memberService.generateAuthCode(phone)
     }
 
-    @PostMapping("/verifyAuthCode")
+    @GetMapping("/verifyAuthCode")
     fun verifyAuthCode(@RequestParam phone: String, @RequestParam authCode: String?): String {
         return memberService.verifyAuthCode(phone, authCode)
     }

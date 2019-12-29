@@ -34,4 +34,9 @@ interface RedisService {
      */
     fun setBit(key:String,offset:Long,flag:Boolean)
     fun getBit(key: String,offset: Long): Boolean
+    /**
+     * list操作
+     */
+    fun lpush(key:String,value: Array<Any>)
+    fun lpop(key: String): Any?
 }

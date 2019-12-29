@@ -55,9 +55,9 @@ class UmsAdminServiceImpl : MySqlCrudServiceImpl<UmsAdmin, Long>(), UmsAdminServ
     }
 
     override fun login(loginQO: LoginQO): String {
-        if(!boomFilter.contains(loginQO.username)){
+     /*   if(!boomFilter.contains(loginQO.username)){
             throw BusinessException(ResultCode.USER_LOGIN_ERROR)
-        }
+        }*/
         val list = mapper.getAdminByUserName(loginQO.username)
         if (list.size == 0) {
             throw BusinessException(ResultCode.USER_LOGIN_ERROR)
