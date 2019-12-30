@@ -5,8 +5,8 @@ import com.kailaisi.eshopdatalinkservice.util.dropLastString
 import com.kailaisi.eshopdatalinkservice.util.logger
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcRegistrations
-import org.springframework.context.annotation.Configuration
 import org.springframework.core.annotation.AnnotatedElementUtils
+import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.servlet.mvc.condition.*
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo
@@ -20,6 +20,7 @@ import java.lang.reflect.Method
  *<p/>作者：wu
  *<br/>创建时间：2019/12/27 23:14
  */
+@Component
 class RequestMappingHandlerConfig : WebMvcRegistrations {
     override fun getRequestMappingHandlerMapping(): RequestMappingHandlerMapping {
         return ControllerRequestMapping()
