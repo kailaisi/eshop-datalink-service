@@ -18,7 +18,6 @@ class EshopApplicationEventListener : ApplicationListener<ApplicationReadyEvent>
     @Resource
     lateinit var umsAdminService: UmsAdminService
     override fun onApplicationEvent(event: ApplicationReadyEvent) {
-        //todo 做初始化操作
         var context = event.applicationContext
         var bean = context.getBean(UmsAdminService::class.java)
         log.info("应用初始化完成${bean},${umsAdminService.toString()}")
