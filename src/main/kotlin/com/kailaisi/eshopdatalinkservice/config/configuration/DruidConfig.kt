@@ -1,17 +1,12 @@
 package com.kailaisi.eshopdatalinkservice.config.configuration
 
-import com.alibaba.druid.pool.DruidDataSource
 import com.alibaba.druid.support.http.StatViewServlet
 import com.alibaba.druid.support.http.WebStatFilter
-import com.kailaisi.eshopdatalinkservice.config.configuration.datasource.DynamicDataSource
-import org.springframework.beans.factory.annotation.Qualifier
-import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.boot.web.servlet.ServletRegistrationBean
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.env.Environment
-import javax.sql.DataSource
 
 
 /**
@@ -47,29 +42,5 @@ class DruidConfig {
         return beanServlet
     }
 
-    @Bean(name = ["masterDataSource"])
-    @ConfigurationProperties(prefix = "spring.datasource.master")
-    fun masterProperties(): DataSource {
-        return DruidDataSource()
-    }
-
-    @Bean(name = ["slaveDataSource"])
-    @ConfigurationProperties(prefix = "spring.datasource.slave")
-    fun slaveProperties(): DataSource {
-        return DruidDataSource()
-    }
-
-    @Bean
-    fun myRoutingDataSource(@Qualifier("masterDataSource") masterDataSource: DataSource,
-                            @Qualifier("slaveDataSource") slaveDataSource: DataSource): DataSource? {
-        val targetDataSources: MutableMap<Any, Any> = HashMap()
-        var map = hashMapOf<Any, Any>()
-        map["master"] = masterDataSource
-        map["slave"] = slaveDataSource
-        val myRoutingDataSource = DynamicDataSource()
-        myRoutingDataSource.setDefaultTargetDataSource(masterDataSource)
-        myRoutingDataSource.setTargetDataSources(targetDataSources)
-        return myRoutingDataSource
-    }
 
 }

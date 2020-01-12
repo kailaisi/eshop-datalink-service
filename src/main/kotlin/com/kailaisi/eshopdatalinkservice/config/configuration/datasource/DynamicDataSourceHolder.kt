@@ -2,6 +2,11 @@ package com.kailaisi.eshopdatalinkservice.config.configuration.datasource
 
 import com.kailaisi.eshopdatalinkservice.util.logger
 
+/**
+ *描述：静态类，里面持有了数据源信息
+ *<p/>作者：wu
+ *<br/>创建时间：2020/1/2 22:52
+ */
 object  DynamicDataSourceHolder {
     val log = logger(this)
     val contextHolder=ThreadLocal<String?>()
